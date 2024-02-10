@@ -1,0 +1,59 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+     <h1 class="heading">Register To QuizFe</h1>
+     <form class="registration-form" (ngSubmit)="submitForm()">
+          <div class="form-row">
+               <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput name="username" [(ngModel)]="user.username" placeholder="Enter your username" required>
+               </mat-form-field>
+          </div>
+
+          <div class="form-row">
+               <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input matInput name="firstName" [(ngModel)]="user.firstName" placeholder="Enter your first name" required>
+               </mat-form-field>
+
+               <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput name="lastName" [(ngModel)]="user.lastName" placeholder="Enter your last name">
+               </mat-form-field>
+          </div>
+          <div class="form-row">
+               <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput name="email" [(ngModel)]="user.email" type="email" placeholder="Enter your email" required>
+               </mat-form-field>
+
+               <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput name="password" [(ngModel)]="user.password"  type="password" placeholder="Enter your password" required>
+               </mat-form-field>
+          </div>
+
+          <div class="form-row">
+               <mat-form-field appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <input matInput name="phone" [(ngModel)]="user.phone" type="number" placeholder="Enter Your Phone" required>
+               </mat-form-field>
+
+               <mat-form-field>
+                    <mat-label>DOB</mat-label>
+                    <input matInput name="dateOfBirth" [(ngModel)]="user.dateOfBirth"  [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+               </mat-form-field>
+          </div>
+
+          <div class="form-row">
+               <mat-form-field appearance="fill">
+                    <mat-label>About</mat-label>
+                    <textarea matInput name="about" [(ngModel)]="user.about" type="number" placeholder="Enter About"></textarea>
+               </mat-form-field>
+          </div>
+
+          <button mat-raised-button color="primary" type="submit">Register</button>
+          <button mat-raised-button>Reset</button>
+     </form>
+</div>
+

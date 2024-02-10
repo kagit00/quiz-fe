@@ -1,0 +1,28 @@
+.welcome-note {
+     font-family: 'Quicksand', sans-serif;
+     font-weight: bold;
+}
+
+.welcome-note-h1 {
+     font-family: 'Quicksand', sans-serif;
+     font-size: 35px;
+}
+
+.register {
+     font-size: 10px;
+}
+
+.topics {
+     font-family: 'Quicksand', sans-serif;
+     font-size: 30px;
+}
+
+.icon-list {
+     font-family: consolas;
+}
+
+.quizfe {
+     font-family: 'DM Sans', sans-serif;
+     word-spacing: 3em;
+     font-weight: bold;
+}
