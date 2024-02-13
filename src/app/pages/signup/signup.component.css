@@ -1,11 +1,11 @@
 .registration-form {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Increased gap for more space between fields */
-  width: 70%; /* Adjusted width to increase horizontally */
-  max-width: 900px; /* Increased max-width for responsiveness */
-  margin: 15vh auto; /* Center vertically and horizontally with more space */
-  padding: 30px; /* Increased padding for a more spacious feel */
+  gap: 10px; 
+  width: 70%; 
+  max-width: 900px; 
+  margin: 15vh auto; 
+  padding: 30px; 
   border: 1px solid #ccc;
   border-radius: 8px;
 }

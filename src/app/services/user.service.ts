@@ -12,6 +12,14 @@ export class UserService {
   ) {}
 
   public addUser(user: any) {
-    return this.http.post(`${baseUrl}/users/`, user);
+    return this.http.post(`${baseUrl}/users`, user);
+  }
+
+  public updateUser(username: string, user: any) {
+    return this.http.put(`${baseUrl}/users/${username}`, user);
+  }
+
+  public deleteUser(username: string) {
+    return this.http.delete(`${baseUrl}/users/${username}`);
   }
 }

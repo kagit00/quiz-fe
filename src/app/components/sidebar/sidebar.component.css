@@ -1,0 +1,28 @@
+.mat-action-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family:  'Quicksand', sans-serif; 
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.mat-icon {
+  font-size: 20px; 
+  margin-right: 5px; 
+  padding-top: 10px;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}

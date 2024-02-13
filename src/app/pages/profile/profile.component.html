@@ -1,0 +1,41 @@
+
+<mat-card class="profile-card">
+  <img src="../../../assets/img/0800.png" alt="Profile Picture" class="card-img-top">
+  <mat-card-content>
+    <h1 class="card-title">Profile Summary</h1>
+    <article>
+     <p class="paragraph">Welcome to your profile section! This space is all about you — your details, preferences, and personalization. Take a moment to review and update your information to ensure a tailored and seamless experience.</p>
+    </article>
+    <form>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput name="username" [(ngModel)]="user.username" [disabled]="!isEditMode">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput name="firstName" [(ngModel)]="user.firstName" [disabled]="!isEditMode">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput name="lastName" [(ngModel)]="user.lastName" [disabled]="!isEditMode">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mobile</mat-label>
+        <input matInput name="phone" [(ngModel)]="user.phone" [disabled]="!isEditMode">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput name="email" [(ngModel)]="user.email" [disabled]="!isEditMode">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>DOB</mat-label>
+        <input matInput name="dateOfBirth" [(ngModel)]="user.dateOfBirth" [matDatepicker]="picker"
+          [disabled]="!isEditMode">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Update Profile</button>
+      <button mat-raised-button color="primary" *ngIf="isEditMode" (click)="updateProfile()">Submit Update</button>
+    </form>
+  </mat-card-content>
+</mat-card>

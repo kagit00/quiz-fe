@@ -21,6 +21,16 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { authInterCeptorProviders } from './services/auth.interceptor';
+import { UserdashboardComponent } from './pages/userdashboard/userdashboard.component';
+import {MatListModule} from '@angular/material/list';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AdmindashboardComponent } from './pages/admindashboard/admindashboard.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { DeleteprofileComponent } from './pages/deleteprofile/deleteprofile.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +39,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdmindashboardComponent,
+    UserdashboardComponent,
+    ProfileComponent,
+    SidebarComponent,
+    DeleteprofileComponent,
+    WelcomeComponent,
+    CategoriesComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,9 +64,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatIconModule,
     MatSliderModule,
     MatCardModule,
-    NgbModule
+    NgbModule,
+    MatListModule
   ],
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,23 @@
+
+<mat-card class="profile-card">
+  <img src="../../../assets/img/0800.png" alt="Profile Picture" class="card-img-top">
+  <mat-card-content>
+    <h1 class="card-title">Delete Account Page:</h1>
+    <article>
+     <p class="paragraph">Welcome to the Account Deletion Page. If you proceed, your account will be permanently deleted, and you'll lose access to all associated data and features.</p>
+     <p class="paragraph">Deleting your account means bidding farewell to your personalized experience. You won't be able to log in, access your saved preferences, or retrieve any stored information. Your account history, including transactions and activity, will be irreversibly erased.</p>
+     <p class="paragraph">Before proceeding, ensure you've backed up any crucial information. Once deleted, your account cannot be recovered. Think carefully before making this decision.</p>
+     <p class="paragraph"><b>We value your presence, and if you change your mind, you're always welcome back.</b></p>
+    </article>
+    <button *ngIf="!iSDeleteMode" (click)="deleteAccount()" mat-raised-button color="warn">Delete Account</button>
+    <form *ngIf="iSDeleteMode" (ngSubmit)="submitForm()">
+          <div class="form-row">
+               <mat-form-field appearance="fill">
+                    <mat-label>Provide Your Username</mat-label>
+                    <input matInput name="password" [(ngModel)]="username" required>
+               </mat-form-field>
+          </div>
+          <button mat-raised-button color="warn" type="submit">Proceed</button>
+     </form>
+  </mat-card-content>
+</mat-card>
