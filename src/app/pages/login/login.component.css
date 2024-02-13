@@ -25,7 +25,24 @@
   font-size: 50px;
 }
 
-.bt {
-  background-color: rgb(207, 207, 247);
-  font-stretch: extra-condensed;
+.heading {
+  margin-top: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+  color: #333;
+}
+
+.welcome-note-h1 {
+     font-family: 'Quicksand', sans-serif;
+     font-size: 35px;
+}
+
+.register {
+     font-size: 10px;
+}
+
+.quizfe {
+     font-family: 'DM Sans', sans-serif;
+     word-spacing: 3em;
+     font-weight: bold;
 }

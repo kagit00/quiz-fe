@@ -1,10 +1,11 @@
-
 <mat-card class="profile-card">
   <img src="../../../assets/img/0800.png" alt="Profile Picture" class="card-img-top">
   <mat-card-content>
     <h1 class="card-title">Profile Summary</h1>
     <article>
-     <p class="paragraph">Welcome to your profile section! This space is all about you — your details, preferences, and personalization. Take a moment to review and update your information to ensure a tailored and seamless experience.</p>
+      <p class="paragraph">Welcome to your profile section! This space is all about you — your details, preferences, and
+        personalization. Take a moment to review and update your information to ensure a tailored and seamless
+        experience.</p>
     </article>
     <form>
       <mat-form-field>
@@ -34,8 +35,15 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <button mat-raised-button color="primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Update Profile</button>
-      <button mat-raised-button color="primary" *ngIf="isEditMode" (click)="updateProfile()">Submit Update</button>
+      <mat-form-field>
+        <mat-label>About</mat-label>
+        <textarea matInput name="about" [(ngModel)]="user.about" [disabled]="!isEditMode"></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Update Profile</button>
+        <button mat-raised-button color="primary" *ngIf="isEditMode" (click)="updateProfile()">Submit Update</button>
+      </div>
+
     </form>
   </mat-card-content>
 </mat-card>

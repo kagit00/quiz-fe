@@ -1,21 +1,27 @@
-<div class="container" fxLayout="column" fxLayoutAlign="center center">
-     <h2 class="heading">Log In To QuizFe</h2>
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+     <app-header></app-header>
+     <main>
+          <div class="container" fxLayout="column" fxLayoutAlign="center center">
+               <h2 class="heading">Log In </h2>
+               <form class="login-form" (ngSubmit)="submitForm()">
+                    <div class="form-row">
+                         <mat-form-field appearance="fill">
+                              <mat-label>Username</mat-label>
+                              <input matInput name="username" [(ngModel)]="logInData.username"
+                                   placeholder="Enter your username" required>
+                         </mat-form-field>
+                    </div>
+                    <div class="form-row">
+                         <mat-form-field appearance="fill">
+                              <mat-label>Password</mat-label>
+                              <input matInput name="password" [(ngModel)]="logInData.password" type="password"
+                                   placeholder="Enter your password" required>
+                         </mat-form-field>
+                    </div>
 
-     <form class="login-form" (ngSubmit)="submitForm()">
-          <div class="form-row">
-               <mat-form-field appearance="fill">
-                    <mat-label>Username</mat-label>
-                    <input matInput name="username" [(ngModel)]="logInData.username" placeholder="Enter your username" required>
-               </mat-form-field>
+                    <button mat-raised-button color="primary" type="submit">Log In</button>
+               </form>
           </div>
-
-          <div class="form-row">
-               <mat-form-field appearance="fill">
-                    <mat-label>Password</mat-label>
-                    <input matInput name="password" [(ngModel)]="logInData.password"  type="password" placeholder="Enter your password" required>
-               </mat-form-field>
-          </div>
-
-          <button mat-raised-button color="primary" type="submit">Log In</button>
-     </form>
+     </main>
+     <app-footer></app-footer>
 </div>

@@ -1,14 +1,26 @@
 <mat-action-list>
-     <button class="btn" mat-list-item routerLink="/admindashboard/">
+     <button class="btn" mat-list-item routerLink={{homeLink}}>
           <mat-icon>home</mat-icon>
           <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">HOME</strong>
      </button>
-     <button class="btn" mat-list-item routerLink="/admindashboard/profile">
+     <button class="btn" mat-list-item routerLink={{categoriesLink}}>
+          <mat-icon>view_list</mat-icon>
+          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">CATEGORIES</strong>
+     </button>
+     <button class="btn" mat-list-item routerLink={{quizLink}}>
+          <mat-icon>view_module</mat-icon>
+          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">QUIZ</strong>
+     </button>
+     <button class="btn" mat-list-item routerLink={{profileLink}}>
           <mat-icon>assignment_ind</mat-icon>
           <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">VIEW PROFILE</strong>
      </button>
-     <button class="btn" mat-list-item routerLink="/admindashboard/deleteprofile">
+     <button class="btn" mat-list-item routerLink={{delProfileLink}}>
           <mat-icon>delete_forever</mat-icon>
           <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">DELETE ACCOUNT</strong>
+     </button>
+     <button class="btn" mat-list-item routerLink={{donationLink}}>
+          <mat-icon>opacity</mat-icon>
+          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">DONATE US</strong>
      </button>
 </mat-action-list>

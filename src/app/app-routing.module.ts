@@ -10,6 +10,9 @@ import { AdminGuard } from './services/admin.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DeleteprofileComponent } from './pages/deleteprofile/deleteprofile.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { DonationComponent } from './pages/donation/donation.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
 
 
 const routes: Routes = [
@@ -45,17 +48,48 @@ const routes: Routes = [
         path: 'deleteprofile',
         component: DeleteprofileComponent,
       },
+      {
+        path: 'donation',
+        component: DonationComponent,
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+      },
+      {
+        path: 'quiz',
+        component: QuizComponent,
+      },
     ]
   },
   {
     path: 'userdashboard',
     component: UserdashboardComponent,
-    pathMatch: 'full',
     canActivate: [UserGuard],
     children: [
       {
+        path: '',
+        component: WelcomeComponent
+      },
+      {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+      },
+      {
+        path: 'deleteprofile',
+        component: DeleteprofileComponent,
+      },
+      {
+        path: 'donation',
+        component: DonationComponent,
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+      },
+      {
+        path: 'quiz',
+        component: QuizComponent,
       },
     ]
   },

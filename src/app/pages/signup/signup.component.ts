@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import  Swal  from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,9 +12,10 @@ import  Swal  from 'sweetalert2';
 export class SignupComponent {
   constructor(
     private userService: UserService,
-    private _snackBar: MatSnackBar
-  ) {}
-  
+    private _snackBar: MatSnackBar,
+    private logInService: LoginService
+  ) { }
+
   public user = {
     username: '',
     firstName: '',
@@ -67,12 +69,30 @@ export class SignupComponent {
       return
     }
 
-    this.userService.addUser(this.user).subscribe (
+    this.userService.addUser(this.user).subscribe(
       (data) => {
-        Swal.fire('Success', 'User registered successfully', 'success')
+        this.logInService.generateToken({
+          "username": this.user.username,
+          "password": this.user.password
+        }).subscribe(
+          (data: any) => {
+            this.logInService.logIn(data.token)
+            this.logInService.getCurrentUser().subscribe((user: any) => {
+              this.logInService.setUser(user)
+              if (this.logInService.getUserRole() == 'ADMIN') {
+                window.location.href = '/admindashboard'
+              } else if (this.logInService.getUserRole() == 'USER') {
+                window.location.href = '/userdashboard'
+              }
+            })
+          },
+          (error) => {
+            Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
+          }
+        )
       },
       (error) => {
-        Swal.fire('Oops', 'Something went wrong', 'error')
+        Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
       }
     )
   }

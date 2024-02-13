@@ -19,9 +19,10 @@ export class ProfileComponent {
     "username": '',
     "firstName": '',
     "lastName": '',
-    "password": '',
     "email": '',
-    "phone": ''
+    "phone": '',
+    "about": '',
+    "dateOfBirth": ''
   }
 
 
@@ -33,9 +34,10 @@ export class ProfileComponent {
     this.updatedUser.username = this.user.username
     this.updatedUser.firstName = this.user.firstName
     this.updatedUser.lastName = this.user.lastName
-    this.updatedUser.password = this.user.password
     this.updatedUser.email = this.user.email
     this.updatedUser.phone = this.user.phone
+    this.updatedUser.about = this.user.about
+    this.updatedUser.dateOfBirth = this.user.dateOfBirth
     if (this.user.username == '' || this.user.username == null) {
       this._snackBar.open("Username is required.", '', {
         duration: 3000,

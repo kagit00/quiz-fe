@@ -1,0 +1,32 @@
+ .profile-card {
+  width: 100%; 
+  margin: 10px auto;
+  border-radius: 8px; 
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+  height: 10px;
+  object-fit: cover;
+}
+
+mat-form-field {
+  padding: 5px;
+}
+
+.card-title {
+  padding: 5px;
+  font-family: 'Quicksand', sans-serif;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.paragraph {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 13px;
+} 

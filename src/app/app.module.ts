@@ -31,6 +31,10 @@ import { DeleteprofileComponent } from './pages/deleteprofile/deleteprofile.comp
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { DonationComponent } from './pages/donation/donation.component';
+import { DashboardtoolbarComponent } from './components/dashboardtoolbar/dashboardtoolbar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import { QuizComponent } from './pages/quiz/quiz.component';
     WelcomeComponent,
     CategoriesComponent,
     QuizComponent,
+    DonationComponent,
+    DashboardtoolbarComponent,
+    HeaderComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

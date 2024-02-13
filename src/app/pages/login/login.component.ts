@@ -47,7 +47,7 @@ export class LoginComponent {
         })
       },
       (error) => {
-        Swal.fire('Oops', 'Something went wrong', 'error')
+        Swal.fire('Oops', error.error.errorMsg? error.error.errorMsg : 'Something went wrong', 'error')
       }
     )
   }
