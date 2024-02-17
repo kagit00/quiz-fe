@@ -93,7 +93,7 @@
 
 .top-right-button-2 {
      position: absolute;
-     top: 0px;
+     top: -5px;
      left: 80%;
      background-color: transparent;
      border: 5px solid transparent;
@@ -101,7 +101,7 @@
 
 .top-right-button-3 {
      position: absolute;
-     top: 0px;
+     top: -5px;
      left: 90%;
      background-color: transparent;
      border: 5px solid transparent;

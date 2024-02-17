@@ -39,6 +39,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
+import { UpdatequizComponent } from './components/updatequiz/updatequiz.component';
+import { AddquizComponent } from './components/addquiz/addquiz.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -62,6 +67,8 @@ import { UpdatecategoryComponent } from './components/updatecategory/updatecateg
     DashboardComponent,
     AddcategoryComponent,
     UpdatecategoryComponent,
+    UpdatequizComponent,
+    AddquizComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +88,10 @@ import { UpdatecategoryComponent } from './components/updatecategory/updatecateg
     NgbModule,
     MatListModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule,
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]

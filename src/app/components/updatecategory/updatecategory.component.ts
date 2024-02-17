@@ -14,11 +14,11 @@ export class UpdatecategoryComponent {
   category: any
 
   constructor(
-      @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdatecategoryComponent>, 
-      private categoryService: CategoryService,
-      private _snackBar: MatSnackBar
-    ) {
-    this.category = { ...data }; 
+    @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdatecategoryComponent>,
+    private categoryService: CategoryService,
+    private _snackBar: MatSnackBar
+  ) {
+    this.category = { ...data };
   }
 
   close(): void {
@@ -52,5 +52,4 @@ export class UpdatecategoryComponent {
       }
     )
   }
-
 }
