@@ -76,9 +76,9 @@ export class SignupComponent {
           "password": this.user.password
         }).subscribe(
           (data: any) => {
-            this.logInService.logIn(data.token)
+            this.logInService.logIn(data.body.token)
             this.logInService.getCurrentUser().subscribe((user: any) => {
-              this.logInService.setUser(user)
+              this.logInService.setUser(user.body)
               if (this.logInService.getUserRole() == 'ADMIN') {
                 window.location.href = '/admindashboard'
               } else if (this.logInService.getUserRole() == 'USER') {
@@ -87,6 +87,8 @@ export class SignupComponent {
             })
           },
           (error) => {
+            if (error.status === 401)
+              this.logInService.logOut()
             Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
           }
         )

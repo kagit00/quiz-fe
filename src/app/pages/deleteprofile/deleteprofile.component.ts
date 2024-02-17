@@ -34,6 +34,8 @@ export class DeleteprofileComponent {
         window.location.href = '/'
       },
       (error) => {
+        if (error.status === 401) 
+          this.logInService.logOut()
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
       }
     )

@@ -1,0 +1,141 @@
+.profile-card {
+     width: 100%;
+     margin: 20px auto;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     border-radius: 8px;
+}
+
+.view-toggle {
+     margin-bottom: 10px;
+}
+
+.view-toggle button {
+     font-size: 1.5em;
+     background-color: transparent;
+     border: none;
+     outline: none;
+     cursor: pointer;
+     color: #757575;
+}
+
+.view-toggle button.active {
+     color: #1976D2;
+}
+
+.grid-container {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+     gap: 20px;
+     padding: 20px;
+     font-family: 'Quicksand', sans-serif;
+     font-size: 10px;
+     font-weight: bold;
+}
+
+.grid-item {
+     padding: 20px;
+     border: 1px solid #ddd;
+     border-radius: 3px;
+     transition: transform 0.3s ease;
+     position: relative;
+
+     &:hover {
+          transform: scale(1.05);
+     }
+}
+
+.category-item {
+     margin-bottom: 16px;
+     height: auto;
+}
+
+.category-details {
+     display: flex;
+     flex-direction: column;
+     padding-left: 16px;
+}
+
+.category-name {
+     font-weight: bold;
+}
+
+.category-description {
+     white-space: normal;
+     font-family: 'Quicksand', sans-serif;
+     font-size: 10px;
+     font-weight: bold;
+}
+
+.cat-head {
+     font-family: 'Quicksand', sans-serif;
+     letter-spacing: 1px;
+     font-weight: bold;
+     font-size: 30px;
+     margin-bottom: 10px;
+     position: absolute;
+     top: 0px;
+     right: 50px;
+}
+
+.btn-2 {
+     width: 70px;
+     margin-top: 15px;
+     font-size: 11px;
+}
+
+.top-right-button {
+     position: absolute;
+     top: 10px;
+     right: 10px;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.top-right-button-2 {
+     position: absolute;
+     top: 0px;
+     left: 80%;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.top-right-button-3 {
+     position: absolute;
+     top: 0px;
+     left: 90%;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.top-right-button-4 {
+     position: absolute;
+     bottom: 8%;
+     left: 30%;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.cat-desc {
+     height: 60px;
+     overflow-y: scroll;
+     scrollbar-width: thin;
+     scrollbar-color: #ddd #f0f0f0;
+
+     &::-webkit-scrollbar {
+          width: 8px;
+     }
+
+     &::-webkit-scrollbar-thumb {
+          background-color: #ddd;
+          border-radius: 4px;
+     }
+
+     &::-webkit-scrollbar-track {
+          background-color: #f0f0f0;
+     }
+
+     .btns {
+          display: flex;
+          padding: 20px;
+     }
+}

@@ -7,3 +7,12 @@
   letter-spacing: 1px;
   word-spacing: 1px;
 }
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Set a z-index value based on your layout */
+  background-color: white; /* Adjust the background color as needed */
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}

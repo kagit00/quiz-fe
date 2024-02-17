@@ -35,6 +35,10 @@ import { DonationComponent } from './pages/donation/donation.component';
 import { DashboardtoolbarComponent } from './components/dashboardtoolbar/dashboardtoolbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +60,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardtoolbarComponent,
     HeaderComponent,
     DashboardComponent,
+    AddcategoryComponent,
+    UpdatecategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +79,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatSliderModule,
     MatCardModule,
     NgbModule,
-    MatListModule
+    MatListModule,
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]

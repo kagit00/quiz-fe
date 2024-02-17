@@ -1,0 +1,20 @@
+<mat-card>
+     <mat-card-header>
+          <button class="close" (click)="close()"><mat-icon>close</mat-icon></button>
+          <mat-card-title>Add Category</mat-card-title>
+     </mat-card-header>
+
+     <mat-card-content>
+          <form (ngSubmit)="saveCategory()">
+               <mat-form-field>
+                    <input matInput placeholder="Enter Category Title" name="title" [(ngModel)]="category.title">
+               </mat-form-field>
+
+               <mat-form-field>
+                    <textarea matInput placeholder="Enter Category Description" name="description" [(ngModel)]="category.description"></textarea>
+               </mat-form-field>
+           
+               <button mat-raised-button color="primary" (click)="close()">Submit</button>
+          </form>
+     </mat-card-content>
+</mat-card>

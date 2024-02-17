@@ -25,7 +25,7 @@ export class LoginService {
 
   public logOut() { 
     localStorage.removeItem('token')
-    window.location.href = ''
+    window.location.href = '/'
     console.log("Token removed successfully")
   }
 
@@ -51,7 +51,7 @@ export class LoginService {
     let user = this.getUser()
     let userRoles = []
     if (user != null) { 
-      for (const i of this.getUser()["authorities"]) { 
+      for (const i of user["authorities"]) { 
         userRoles.push(i.authority)
       }
     }

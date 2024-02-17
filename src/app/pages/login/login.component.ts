@@ -36,9 +36,9 @@ export class LoginComponent {
 
     this.logInService.generateToken(this.logInData).subscribe (
       (data: any) => {
-        this.logInService.logIn(data.token)
+        this.logInService.logIn(data.body.token)
         this.logInService.getCurrentUser().subscribe((user: any) => {
-          this.logInService.setUser(user)
+          this.logInService.setUser(user.body)
           if (this.logInService.getUserRole() == 'ADMIN') {
             window.location.href = '/admindashboard'
           } else if (this.logInService.getUserRole() == 'USER') {

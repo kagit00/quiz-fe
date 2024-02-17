@@ -13,6 +13,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { DonationComponent } from './pages/donation/donation.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
 
 
 const routes: Routes = [
@@ -59,7 +60,7 @@ const routes: Routes = [
       {
         path: 'quiz',
         component: QuizComponent,
-      },
+      }
     ]
   },
   {
