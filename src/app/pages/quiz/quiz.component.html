@@ -17,7 +17,7 @@
                     <div class="cat-title" mat-card-subtitle>{{ c.title }} | {{ c.numberOfQuestions }} qs. | {{ c.maxMarks }} mks</div>
                     <div class="category-description" mat-card-subtitle>{{ c.category.title }}</div>
                     <div class="category-description" mat-card-content>{{ c.description }}</div>
-                    <button class="btn-2" mat-raised-button color="primary" type="submit">Proceed</button>
+                    <button (click)="openModalForQuestions(c)" class="btn-2" mat-raised-button color="primary" type="submit">Questions</button>
                     <button (click)="openModalForQuizUpdate(c)" class="top-right-button-2"
                          type="submit"><mat-icon>update</mat-icon></button>
                     <button (click)="deleteQuiz(c.quizId)" class="top-right-button-3"
@@ -36,10 +36,10 @@
                     <div class="category-description" mat-card-subtitle>{{ c.category.title }}</div>
                     <div class="cat-desc category-description" mat-card-content>{{ c.description }}</div>
 
-                    <button class="btn-2" mat-raised-button color="primary" type="submit">Proceed</button>
-                    <button (click)="openModalForQuizUpdate(c)" class="top-right-button-4"
+                    <button (click)="openModalForQuestions(c)" class="btn-2" mat-raised-button color="primary" type="submit">Questions</button>
+                    <button (click)="openModalForQuizUpdate(c)" class="top-right-button-3"
                          type="submit"><mat-icon>update</mat-icon></button>
-                    <button (click)="deleteQuiz(c.quizId)" class="top-right-button-3"
+                    <button (click)="deleteQuiz(c.quizId)" class="top-right-button-4"
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
                </mat-card>
           </div>

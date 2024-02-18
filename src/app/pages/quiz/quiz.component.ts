@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { QuizService } from '../../services/quiz.service';
 import { AddquizComponent } from '../../components/addquiz/addquiz.component';
 import { UpdatequizComponent } from '../../components/updatequiz/updatequiz.component';
+import { QustionsofquizComponent } from '../../components/qustionsofquiz/qustionsofquiz.component';
 
 @Component({
   selector: 'app-quiz',
@@ -12,7 +13,12 @@ import { UpdatequizComponent } from '../../components/updatequiz/updatequiz.comp
   styleUrl: './quiz.component.css'
 })
 export class QuizComponent {
-  constructor(private logInService: LoginService, private dialog: MatDialog, private quizService: QuizService) { }
+  constructor(
+    private logInService: LoginService, 
+    private dialog: MatDialog, 
+    private quizService: QuizService,
+
+  ) { }
   quizzes: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
   displayedQuizzesGrid: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
   displayedQuizzesList: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
@@ -52,6 +58,10 @@ export class QuizComponent {
     this.dialog.open(AddquizComponent);
   }
 
+  openModalForQuestions(quiz: any) {
+    this.dialog.open(QustionsofquizComponent, {data: quiz});
+  }
+
   openModalForQuizUpdate(quiz: any) {
     this.dialog.open(UpdatequizComponent, { data: quiz });
   }
@@ -71,7 +81,7 @@ export class QuizComponent {
   deleteQuiz(id: string) {
     this.quizService.delete(id).subscribe(
       (data: any) => {
-        Swal.fire('Success', 'Category Got Deleted Successfully', 'success')
+        Swal.fire('Success', 'Quiz Got Deleted Successfully', 'success')
       },
       (error: any) => {
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')

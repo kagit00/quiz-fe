@@ -1,0 +1,51 @@
+<mat-card>
+     <mat-card-header>
+          <button class="close" (click)="close()"><mat-icon>close</mat-icon></button>
+          <mat-card-title>Add Question</mat-card-title>
+     </mat-card-header>
+
+     <mat-card-content>
+          <form (ngSubmit)="saveQuestion()">
+               <mat-form-field>
+                    <input matInput placeholder="Enter Question Content" name="content" [(ngModel)]="question.content">
+               </mat-form-field>
+
+               <div class="form-fields-container">
+                    <mat-form-field>
+                         <mat-label>Enter Correct Answer</mat-label>
+                         <input matInput type="text" name="correctAnswer" [(ngModel)]="question.correctAnswer" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                         <mat-label>Enter Image URL</mat-label>
+                         <input matInput type="text" name="imageUrl" [(ngModel)]="question.imageUrl" />
+                    </mat-form-field>
+               </div>
+
+               <div class="form-fields-container">
+                    <mat-form-field>
+                         <mat-label>Enter Option 1</mat-label>
+                         <input matInput type="text" name="option1" [(ngModel)]="option1" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                         <mat-label>Enter Option 2</mat-label>
+                         <input matInput type="text" name="option2" [(ngModel)]="option2" />
+                    </mat-form-field>
+               </div>
+               <div class="form-fields-container">
+                    <mat-form-field>
+                         <mat-label>Enter Option 3</mat-label>
+                         <input matInput type="text" name="option3" [(ngModel)]="option3" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                         <mat-label>Enter Option 4</mat-label>
+                         <input matInput type="text" name="option3" [(ngModel)]="option4" />
+                    </mat-form-field>
+               </div>
+
+               <button mat-raised-button color="primary" (click)="close()">Submit</button>
+          </form>
+     </mat-card-content>
+</mat-card>

@@ -27,7 +27,7 @@
                     </mat-form-field>
                </div>
                <mat-form-field>
-                    <mat-select placeholder="Select Option" [(ngModel)]="selectedOption"
+                    <mat-select placeholder="Select Category" [(ngModel)]="selectedOption"
                          [ngModelOptions]="{ standalone: true }" (ngModelChange)="onOptionSelected()">
                          <mat-option *ngFor="let c of categories" [value]="c">{{ c.title }}</mat-option>
                     </mat-select>

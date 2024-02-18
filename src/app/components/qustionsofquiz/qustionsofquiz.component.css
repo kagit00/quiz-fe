@@ -1,0 +1,96 @@
+/* quiz.component.css */
+.questions-container {
+     max-height: 300px;
+     overflow-y: auto;
+}
+
+.question {
+     margin-bottom: 20px;
+     font-family: 'Quicksand', sans-serif;
+     font-weight: bold;
+     font-size: 12px;
+}
+
+.top-right-button-4 {
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+
+.top-right-button {
+     position: absolute;
+     top: 10px;
+     right: 10px;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.top-right-button-2 {
+     position: absolute;
+     top: -5px;
+     left: 80%;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.action-button {
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.top-right-button-3 {
+     position: absolute;
+     top: -5px;
+     left: 90%;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.top-right-button-4 {
+     position: absolute;
+     bottom: 8%;
+     left: 30%;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
+.question-image {
+     margin-top: 5px;
+}
+
+mat-card-title {
+     font-size: 26px;
+     letter-spacing: 1px;
+     font-weight: bold;
+     font-family: 'Quicksand', sans-serif;
+     margin-bottom: 16px;
+}
+
+.options {
+  list-style-type: none;
+  padding: 0;
+}
+
+.option {
+  margin-right: 20px; /* Adjust spacing between options as needed */
+}
+
+.option label {
+  display: flex;
+  align-items: center;
+}
+
+.option input {
+  margin-right: 8px; /* Adjust spacing between radio button and text as needed */
+}
+
+.no-data {
+     margin-top: 20px; text-align: center;
+     font-size: 13px;
+}
+
+mat-label {
+     font-size: 12px;
+     font-family: 'Quicksand', sans-serif;
+     font-weight: bold;
+}

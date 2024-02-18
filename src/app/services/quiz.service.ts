@@ -17,7 +17,7 @@ export class QuizService {
   }
 
   public updateQuiz(quiz: any): any { 
-    return this.http.put(`${baseUrl}/quizzes/${quiz.quizId}`, quiz)
+    return this.http.put(`${baseUrl}/quizzes/`, quiz)
   }
 
   public delete(quizId: any): any { 

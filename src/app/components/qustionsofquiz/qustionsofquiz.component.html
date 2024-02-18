@@ -1,0 +1,32 @@
+<mat-card class="question-modal">
+     <mat-card-header>
+          <button class="close top-right-button" (click)="close()"><mat-icon>close</mat-icon></button>
+          <mat-card-title *ngIf="questions.length > 0">All Questions</mat-card-title>
+          <mat-card-title *ngIf="questions.length < 1" class="no-data">No Questions Available Under This Quiz</mat-card-title>
+     </mat-card-header>
+
+     <mat-card-content>
+          <div class="questions-container">
+               <div class="question" *ngFor="let question of questions">
+                    {{ question.content }}
+                    <div>
+                         <img *ngIf="question.imageUrl" src={{question.imageUrl}} height="150" alt="Question Image"
+                              class="question-image">
+                    </div>
+
+                    <ul class="options">
+                         <li *ngFor="let option of question.options" class="option">
+                              <input type="radio" [name]="option" [value]="option" disabled>
+                              {{ option }}
+                         </li>
+                    </ul>
+                    <p style="font-size: 10px;"><strong>Correct Answer:</strong> {{ question.correctAnswer }}</p>
+                    <button (click)="deleteQuestion(question.questionId)" class="action-button"
+                         type="submit"><mat-icon>delete_forever</mat-icon></button>
+                    <button (click)="openModalForQuestionUpdate(question)" class="action-button"
+                         type="submit"><mat-icon>update</mat-icon></button>
+               </div>
+          </div>
+          <button *ngIf="questions.length <= 10" (click)="openModalForQuestionAddition(quiz)" mat-raised-button color="primary" (click)="close()">Add</button>
+     </mat-card-content>
+</mat-card>

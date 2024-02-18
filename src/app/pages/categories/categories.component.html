@@ -17,9 +17,8 @@
                <div class="category-details">
                     <div class="cat-title" mat-card-subtitle>{{ c.title }}</div>
                     <div class="category-description" mat-card-content>{{ c.description }}</div>
-                    <button class="btn-2" mat-raised-button color="primary" type="submit">Proceed</button>
-                    <button (click)="openModalForCategoryUpdate(c)" class="top-right-button-2"
-                         type="submit"><mat-icon>update</mat-icon></button>
+                    <button (click)="openModalForCategoryUpdate(c)" class="btn-2" mat-raised-button color="primary"
+                         type="submit">Update</button>
                     <button (click)="deleteCategoryByCategoryCode(c.cid)" class="top-right-button-3"
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
                </div>
@@ -34,10 +33,9 @@
                <mat-card *ngFor="let c of displayedCategoriesGrid" class="grid-item">
                     <div class="cat-title" mat-card-subtitle>{{ c.title }}</div>
                     <div class="cat-desc" mat-card-content>{{ c.description }}</div>
-                    <button class="btn-2" mat-raised-button color="primary" type="submit">Proceed</button>
-                    <button (click)="openModalForCategoryUpdate(c)" class="top-right-button-4"
-                         type="submit"><mat-icon>update</mat-icon></button>
-                    <button (click)="deleteCategoryByCategoryCode(c.cid)" class="top-right-button-3"
+                    <button (click)="openModalForCategoryUpdate(c)" class="btn-2" mat-raised-button color="primary"
+                         type="submit">Update</button>
+                    <button (click)="deleteCategoryByCategoryCode(c.cid)" class="top-right-button-4"
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
                </mat-card>
           </div>

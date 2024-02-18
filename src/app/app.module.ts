@@ -44,6 +44,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import { UpdatequizComponent } from './components/updatequiz/updatequiz.component';
 import { AddquizComponent } from './components/addquiz/addquiz.component';
 import { MatSelectModule } from '@angular/material/select';
+import { QustionsofquizComponent } from './components/qustionsofquiz/qustionsofquiz.component';
+import { AddquestionComponent } from './components/addquestion/addquestion.component';
+import { UpdatequestionComponent } from './components/updatequestion/updatequestion.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +72,9 @@ import { MatSelectModule } from '@angular/material/select';
     UpdatecategoryComponent,
     UpdatequizComponent,
     AddquizComponent,
+    QustionsofquizComponent,
+    AddquestionComponent,
+    UpdatequestionComponent,
   ],
   imports: [
     BrowserModule,
