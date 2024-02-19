@@ -26,6 +26,13 @@ export class QuizComponent {
   listPageSize: number = 3;
   gridPageSizeOptions: number[] = [3, 5, 6];
   listPageSizeOptions: number[] = [2, 3];
+  role: any = this.logInService.getUserRole()
+
+  quizFilterParams = {
+    'titleStartsWith': '',
+    'titleContains': '',
+    'categories': []
+  }
 
   ngOnInit(): void {
     this.getAllQuizzes()
@@ -40,7 +47,7 @@ export class QuizComponent {
   }
 
   getAllQuizzes() {
-    this.quizService.getQuizzes().subscribe(
+    this.quizService.getQuizzes(this.quizFilterParams).subscribe(
       (data: any) => {
         this.quizzes = data.body;
         this.displayedQuizzesGrid = this.quizzes.slice(0, this.gridPageSize);

@@ -8,8 +8,8 @@ import baseUrl from './helper';
 export class QuizService {
   constructor(private http: HttpClient) { }
 
-  public getQuizzes(): any { 
-    return this.http.get(`${baseUrl}/quizzes/`)
+  public getQuizzes(quizFilterParams: any): any { 
+    return this.http.post(`${baseUrl}/quizzes/all`, quizFilterParams)
   }
 
   public addQuiz(quiz: any): any { 

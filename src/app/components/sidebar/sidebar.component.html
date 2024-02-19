@@ -3,7 +3,7 @@
           <mat-icon>home</mat-icon>
           <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">HOME</strong>
      </button>
-     <button class="btn" mat-list-item routerLink={{categoriesLink}}>
+     <button *ngIf="role=='ADMIN'" class="btn" mat-list-item routerLink={{categoriesLink}}>
           <mat-icon>view_list</mat-icon>
           <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">CATEGORIES</strong>
      </button>
