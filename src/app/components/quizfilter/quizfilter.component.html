@@ -1,0 +1,44 @@
+<mat-card>
+     <mat-card-header>
+          <button class="close" (click)="close()"><mat-icon>close</mat-icon></button>
+          <mat-card-title>Fiter Quizzes</mat-card-title>
+     </mat-card-header>
+
+     <mat-card-content>
+          <form (ngSubmit)="filterQuizData()">
+               <div class="form-fields-container">
+                    <mat-form-field>
+                         <mat-label>Quiz Title Starts With</mat-label>
+                         <input matInput placeholder="" name="titleStartsWith"
+                              [(ngModel)]="quizFilter.quizFilterParams.titleStartsWith" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                         <mat-label>Quiz Title Contains</mat-label>
+                         <input matInput placeholder="" name="titleContains"
+                              [(ngModel)]="quizFilter.quizFilterParams.titleContains" />
+                    </mat-form-field>
+               </div>
+
+               <mat-form-field>
+                    <mat-label>Categories</mat-label>
+                    <mat-select [formControl]="categories" multiple>
+                         <mat-select-trigger>
+                              {{categories.value?.[0]?.title || ''}}
+                              @if ((categories.value?.length || 0) > 1) {
+                              <span class="example-additional-selection">
+                                   (+{{(categories.value?.length || 0) - 1}} {{categories.value?.length === 2 ? 'other' :
+                                   'others'}})
+                              </span>
+                              }
+                         </mat-select-trigger>
+                         @for (category of categoryList; track category) {
+                         <mat-option [value]="category">{{category.title}}</mat-option>
+                         }
+                    </mat-select>
+               </mat-form-field>
+
+               <button mat-raised-button color="primary" (click)="close()">Apply</button>
+          </form>
+     </mat-card-content>
+</mat-card>

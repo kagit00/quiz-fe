@@ -6,6 +6,9 @@ import { QuizService } from '../../services/quiz.service';
 import { AddquizComponent } from '../../components/addquiz/addquiz.component';
 import { UpdatequizComponent } from '../../components/updatequiz/updatequiz.component';
 import { QustionsofquizComponent } from '../../components/qustionsofquiz/qustionsofquiz.component';
+import { QuizfilterComponent } from '../../components/quizfilter/quizfilter.component';
+import { FilterService } from '../../services/filter.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-quiz',
@@ -14,11 +17,13 @@ import { QustionsofquizComponent } from '../../components/qustionsofquiz/qustion
 })
 export class QuizComponent {
   constructor(
-    private logInService: LoginService, 
-    private dialog: MatDialog, 
+    private logInService: LoginService,
+    private dialog: MatDialog,
     private quizService: QuizService,
-
+    private filterService: FilterService,
+    private _snackBar: MatSnackBar
   ) { }
+
   quizzes: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
   displayedQuizzesGrid: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
   displayedQuizzesList: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
@@ -28,14 +33,46 @@ export class QuizComponent {
   listPageSizeOptions: number[] = [2, 3];
   role: any = this.logInService.getUserRole()
 
-  quizFilterParams = {
-    'titleStartsWith': '',
-    'titleContains': '',
-    'categories': []
+  quizFilter = {
+    quizFilterParams: {
+      'titleStartsWith': '',
+      'titleContains': '',
+      'categories': [] as { cid: string, title: string, description: string }[]
+    },
+    filterData: [] as { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[]
   }
 
   ngOnInit(): void {
-    this.getAllQuizzes()
+    this.filterService.getFilteredQuizzes().subscribe(
+      (data: any) => {
+        this.getFilterParams();
+        if (this.quizFilter.quizFilterParams.titleStartsWith !== '' ||
+          this.quizFilter.quizFilterParams.titleContains !== '' ||
+          this.quizFilter.quizFilterParams.categories.length > 0) {
+          this.quizzes = data;
+          this.displayedQuizzesGrid = this.quizzes;
+          this.displayedQuizzesList = this.quizzes;
+          return
+        } else
+          this.getAllQuizzes()
+      }
+    )
+  }
+
+  getFilterParams() {
+    this.filterService.getFilterParams().subscribe(
+      (data: any) => {
+        this.quizFilter.quizFilterParams = data;
+      },
+      (error: any) => {
+        this._snackBar.open("Something went wrong." + error, '', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right'
+        });
+        return
+      }
+    )
   }
 
   viewMode: 'grid' | 'list' = 'list';
@@ -47,7 +84,7 @@ export class QuizComponent {
   }
 
   getAllQuizzes() {
-    this.quizService.getQuizzes(this.quizFilterParams).subscribe(
+    this.quizService.getQuizzes(this.quizFilter.quizFilterParams).subscribe(
       (data: any) => {
         this.quizzes = data.body;
         this.displayedQuizzesGrid = this.quizzes.slice(0, this.gridPageSize);
@@ -61,12 +98,15 @@ export class QuizComponent {
     )
   }
 
-  openModalForQuizAddition() {
-    this.dialog.open(AddquizComponent);
+  openModalForQuizOperation() {
+    if (this.role == 'ADMIN')
+      this.dialog.open(AddquizComponent);
+    else if (this.role == 'USER')
+      this.dialog.open(QuizfilterComponent);
   }
 
   openModalForQuestions(quiz: any) {
-    this.dialog.open(QustionsofquizComponent, {data: quiz});
+    this.dialog.open(QustionsofquizComponent, { data: quiz });
   }
 
   openModalForQuizUpdate(quiz: any) {

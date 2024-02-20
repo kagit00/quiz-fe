@@ -47,6 +47,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { QustionsofquizComponent } from './components/qustionsofquiz/qustionsofquiz.component';
 import { AddquestionComponent } from './components/addquestion/addquestion.component';
 import { UpdatequestionComponent } from './components/updatequestion/updatequestion.component';
+import { QuizfilterComponent } from './components/quizfilter/quizfilter.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { UpdatequestionComponent } from './components/updatequestion/updatequest
     QustionsofquizComponent,
     AddquestionComponent,
     UpdatequestionComponent,
+    QuizfilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +100,9 @@ import { UpdatequestionComponent } from './components/updatequestion/updatequest
     MatDialogModule,
     MatProgressBarModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]
