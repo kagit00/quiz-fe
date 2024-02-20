@@ -47,8 +47,8 @@ export class QuizComponent {
       (data: any) => {
         this.getFilterParams();
         if (this.quizFilter.quizFilterParams.titleStartsWith !== '' ||
-          this.quizFilter.quizFilterParams.titleContains !== '' ||
-          this.quizFilter.quizFilterParams.categories.length > 0) {
+          this.quizFilter.quizFilterParams.titleContains !== '' || (this.quizFilter.quizFilterParams.categories !== null &&
+          this.quizFilter.quizFilterParams.categories.length > 0)) {
           this.quizzes = data;
           this.displayedQuizzesGrid = this.quizzes;
           this.displayedQuizzesList = this.quizzes;

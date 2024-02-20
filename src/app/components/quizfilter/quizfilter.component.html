@@ -27,7 +27,8 @@
                               {{categories.value?.[0]?.title || ''}}
                               @if ((categories.value?.length || 0) > 1) {
                               <span class="example-additional-selection">
-                                   (+{{(categories.value?.length || 0) - 1}} {{categories.value?.length === 2 ? 'other' :
+                                   (+{{(categories.value?.length || 0) - 1}} {{categories.value?.length === 2 ? 'other'
+                                   :
                                    'others'}})
                               </span>
                               }
@@ -38,7 +39,11 @@
                     </mat-select>
                </mat-form-field>
 
+               <div class="button-container">
+                    <button class="btn" mat-raised-button *ngFor="let value of appliedFilters[0]">{{value.title}}</button>
+               </div>
                <button mat-raised-button color="primary" (click)="close()">Apply</button>
+
           </form>
      </mat-card-content>
 </mat-card>

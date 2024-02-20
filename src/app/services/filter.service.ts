@@ -11,7 +11,7 @@ export class FilterService {
   filteredQuizzes$: Observable<{ quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[]> = this.filteredQuizzesSubject.asObservable();
 
   private filterParamsSubject = new BehaviorSubject<{ titleStartsWith: string, titleContains: string, categories: { cid: string, title: string, description: string }[] }>({
-    titleStartsWith: '', 
+    titleStartsWith: '',
     titleContains: '',
     categories: []
   })
@@ -23,7 +23,7 @@ export class FilterService {
   }
 
   setFilterParams(data: { titleStartsWith: string, titleContains: string, categories: { cid: string, title: string, description: string }[] }) {
-    this.filterParamsSubject.next(data);
+      this.filterParamsSubject.next(data);
   }
 
   getFilteredQuizzes() {

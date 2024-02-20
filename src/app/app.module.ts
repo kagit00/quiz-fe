@@ -102,7 +102,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatDividerModule,
     MatSelectModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]
