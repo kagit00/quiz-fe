@@ -26,6 +26,7 @@
                               [(ngModel)]="quiz.numberOfQuestions" />
                     </mat-form-field>
                </div>
+               
                <mat-form-field>
                     <mat-select placeholder="Select Category" [(ngModel)]="selectedOption"
                          [ngModelOptions]="{ standalone: true }" (ngModelChange)="onOptionSelected()">

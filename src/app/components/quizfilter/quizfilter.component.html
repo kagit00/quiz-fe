@@ -22,17 +22,7 @@
 
                <mat-form-field>
                     <mat-label>Categories</mat-label>
-                    <mat-select [formControl]="categories" multiple>
-                         <mat-select-trigger>
-                              {{categories.value?.[0]?.title || ''}}
-                              @if ((categories.value?.length || 0) > 1) {
-                              <span class="example-additional-selection">
-                                   (+{{(categories.value?.length || 0) - 1}} {{categories.value?.length === 2 ? 'other'
-                                   :
-                                   'others'}})
-                              </span>
-                              }
-                         </mat-select-trigger>
+                    <mat-select name="category" [(ngModel)]="quizFilter.quizFilterParams.categories[0]">
                          @for (category of categoryList; track category) {
                          <mat-option [value]="category">{{category.title}}</mat-option>
                          }
@@ -40,10 +30,11 @@
                </mat-form-field>
 
                <div class="button-container">
-                    <button class="btn" mat-raised-button *ngFor="let value of appliedFilters[0]">{{value.title}}</button>
+                    <button (click)="removeCategory()" class="btn" mat-raised-button
+                         *ngFor="let value of appliedFilters[0]"><mat-icon>cancel</mat-icon> {{value.title}}</button>
                </div>
-               <button mat-raised-button color="primary" (click)="close()">Apply</button>
-
+               <button class="apply" mat-raised-button color="primary" (click)="close()">Apply</button>
+               <button class="reset" mat-button color="primary" (click)="reset()">Reset</button>
           </form>
      </mat-card-content>
 </mat-card>

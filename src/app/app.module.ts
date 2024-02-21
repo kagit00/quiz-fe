@@ -49,6 +49,8 @@ import { AddquestionComponent } from './components/addquestion/addquestion.compo
 import { UpdatequestionComponent } from './components/updatequestion/updatequestion.component';
 import { QuizfilterComponent } from './components/quizfilter/quizfilter.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatSelectModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
+    NgSelectModule
   ],
   providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]

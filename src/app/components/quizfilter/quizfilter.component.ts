@@ -19,10 +19,9 @@ export class QuizfilterComponent {
     private categoryService: CategoryService,
     private filterService: FilterService,
     private quizService: QuizService,
-    private loginService: LoginService
+    private loginService: LoginService,
   ) {}
 
-  categories = new FormControl()
   categoryList: { cid: string, title: string, description: string }[] = []
 
   ngOnInit() {
@@ -39,7 +38,6 @@ export class QuizfilterComponent {
     filterData: [] as { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[]
   }
   appliedFilters: any = []
-  appliedCategories: any = []
 
   close() {
     this.dialogRef.close()
@@ -60,7 +58,6 @@ export class QuizfilterComponent {
     this.filterService.getFilterParams().subscribe(
       (data: any) => {
         this.quizFilter.quizFilterParams = data
-        console.log(this.quizFilter.quizFilterParams)
         this.appliedFilters.push(this.quizFilter.quizFilterParams.categories)
       },
       (error: any) => {
@@ -70,7 +67,6 @@ export class QuizfilterComponent {
   }
 
   filterQuizData() {
-    if (this.categories.value) this.quizFilter.quizFilterParams.categories = this.categories.value
     this.quizService.getQuizzes(this.quizFilter.quizFilterParams).subscribe(
       (data: any) => {
         this.quizFilter.filterData = data.body
@@ -82,6 +78,17 @@ export class QuizfilterComponent {
         Swal.fire('Error', error.error.message ? error.error.message : 'Something went wrong', 'error')
       }
     )
+  }
+
+  removeCategory() {
+    this.appliedFilters = []
+    this.quizFilter.quizFilterParams.categories = []
+  }
+
+  reset() {
+    this.removeCategory()
+    this.quizFilter.quizFilterParams.titleContains = ''
+    this.quizFilter.quizFilterParams.titleStartsWith = ''
   }
 }
 

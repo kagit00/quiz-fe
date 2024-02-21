@@ -1,6 +1,10 @@
 <mat-card class="profile-card">
-     <button *ngIf="role=='ADMIN'" (click)="openModalForQuizOperation()" class="top-right-button"><mat-icon>add_circle</mat-icon></button>
-     <button *ngIf="role=='USER'" (click)="openModalForQuizOperation()" class="top-right-button"><mat-icon>filter_list</mat-icon></button>
+     <button *ngIf="role=='ADMIN'" (click)="openModalForQuizOperation()"
+          class="top-right-button"><mat-icon>add_circle</mat-icon></button>
+     <button *ngIf="role=='USER'" (click)="openModalForQuizOperation()" class="top-right-button"><span
+               class="material-symbols-outlined">
+               filter_alt
+          </span></button>
 
      <div class="view-toggle">
           <button mat-icon-button (click)="toggleView('grid')" [class.active]="viewMode === 'grid'">

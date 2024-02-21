@@ -32,6 +32,7 @@ export class QuizComponent {
   gridPageSizeOptions: number[] = [3, 5, 6];
   listPageSizeOptions: number[] = [2, 3];
   role: any = this.logInService.getUserRole()
+  categories: any = []
 
   quizFilter = {
     quizFilterParams: {
@@ -63,6 +64,7 @@ export class QuizComponent {
     this.filterService.getFilterParams().subscribe(
       (data: any) => {
         this.quizFilter.quizFilterParams = data;
+        this.categories = this.quizFilter.quizFilterParams.categories
       },
       (error: any) => {
         this._snackBar.open("Something went wrong." + error, '', {
@@ -102,7 +104,7 @@ export class QuizComponent {
     if (this.role == 'ADMIN')
       this.dialog.open(AddquizComponent);
     else if (this.role == 'USER')
-      this.dialog.open(QuizfilterComponent);
+      this.dialog.open(QuizfilterComponent, {data: this.categories});
   }
 
   openModalForQuestions(quiz: any) {
