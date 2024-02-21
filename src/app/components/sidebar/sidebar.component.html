@@ -1,26 +1,41 @@
-<mat-action-list>
+<mat-action-list class="notMobile"  [ngClass]="{'hide-element': isMobile}">
      <button class="btn" mat-list-item routerLink={{homeLink}}>
-          <mat-icon>home</mat-icon>
-          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">HOME</strong>
+          <span class="material-symbols-outlined">home</span>
      </button>
-     <button *ngIf="role=='ADMIN'" class="btn" mat-list-item routerLink={{categoriesLink}}>
-          <mat-icon>view_list</mat-icon>
-          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">CATEGORIES</strong>
+     <button *ngIf="role=='ADMIN'" class="btn" mat-list-item routerLink={{categoriesLink}} routerLinkActive="active-link">
+          <span class="material-symbols-outlined">category</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{quizLink}}>
-          <mat-icon>view_module</mat-icon>
-          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">QUIZ</strong>
+     <button class="btn" mat-list-item routerLink={{quizLink}} routerLinkActive="active-link">
+          <span class="material-symbols-outlined">quiz</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{profileLink}}>
-          <mat-icon>assignment_ind</mat-icon>
-          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">VIEW PROFILE</strong>
+     <button class="btn" mat-list-item routerLink={{profileLink}} routerLinkActive="active-link">
+          <span class="material-symbols-outlined">person</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{delProfileLink}}>
-          <mat-icon>delete_forever</mat-icon>
-          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">DELETE ACCOUNT</strong>
+     <button class="btn" mat-list-item routerLink={{delProfileLink}} routerLinkActive="active-link">
+          <span class="material-symbols-outlined">person_remove</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{donationLink}}>
-          <mat-icon>opacity</mat-icon>
-          <strong style="font-size: 13px; font-family: 'Quicksand', sans-serif; ">DONATE US</strong>
+     <button class="btn" mat-list-item routerLink={{donationLink}} routerLinkActive="active-link">
+          <span class="material-symbols-outlined">volunteer_activism</span>
+     </button>
+</mat-action-list>
+
+<mat-action-list class="mobile" [ngClass]="{'hide-element': !isMobile}">
+     <button class="btn" mat-list-item routerLink={{homeLink}}>
+          <span class="material-symbols-outlined">home</span>
+     </button>
+     <button *ngIf="role=='ADMIN'" class="btn" mat-list-item routerLink={{categoriesLink}} routerLinkActive="active-link-mobile">
+          <span class="material-symbols-outlined">category</span>
+     </button>
+     <button class="btn" mat-list-item routerLink={{quizLink}} routerLinkActive="active-link-mobile">
+          <span class="material-symbols-outlined">quiz</span>
+     </button>
+     <button class="btn" mat-list-item routerLink={{profileLink}} routerLinkActive="active-link-mobile">
+          <span class="material-symbols-outlined">person</span>
+     </button>
+     <button class="btn" mat-list-item routerLink={{delProfileLink}} routerLinkActive="active-link-mobile">
+          <span class="material-symbols-outlined">person_remove</span>
+     </button>
+     <button class="btn" mat-list-item routerLink={{donationLink}} routerLinkActive="active-link-mobile">
+          <span class="material-symbols-outlined">volunteer_activism</span>
      </button>
 </mat-action-list>

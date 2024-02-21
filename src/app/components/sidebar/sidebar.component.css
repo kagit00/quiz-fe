@@ -1,28 +1,31 @@
-.mat-action-list {
+.notMobile {
   display: flex;
   flex-direction: column;
 }
 
 .btn {
-  display: flex;
+  display: block;
   width: 100%;
   text-align: left;
   border: none;
-  background-color: #f0f0f0;
-  color: #333;
   cursor: pointer;
-  transition: background-color 0.3s;
   font-family:  'Quicksand', sans-serif; 
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 10px;
 }
 
-.mat-icon {
-  font-size: 20px; 
-  margin-right: 5px; 
-  padding-top: 10px;
+.mobile {
+  display: flex;
+  flex-direction: row;
 }
 
-.btn:hover {
-  background-color: #ddd;
+.active-link {
+  border-left: 3px solid black;
+}
+
+.active-link-mobile {
+  border-bottom: 3px solid black;
+}
+
+.hide-element {
+  display: none;
 }

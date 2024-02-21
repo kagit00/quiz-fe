@@ -29,7 +29,7 @@ export class QuizComponent {
   displayedQuizzesList: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
   gridPageSize: number = 6;
   listPageSize: number = 3;
-  gridPageSizeOptions: number[] = [3, 5, 6];
+  gridPageSizeOptions: number[] = [3, 6];
   listPageSizeOptions: number[] = [2, 3];
   role: any = this.logInService.getUserRole()
   categories: any = []
@@ -136,5 +136,14 @@ export class QuizComponent {
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
       }
     )
+  }
+
+  refresh() {
+    this.quizFilter.filterData = []
+    this.quizFilter.quizFilterParams.categories = []
+    this.quizFilter.quizFilterParams.titleContains = ''
+    this.quizFilter.quizFilterParams.titleStartsWith = ''
+    this.filterService.setFilterParams(this.quizFilter.quizFilterParams)
+    this.filterService.setFilteredQuizzes(this.quizFilter.filterData)
   }
 }

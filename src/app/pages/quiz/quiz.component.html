@@ -1,10 +1,12 @@
 <mat-card class="profile-card">
+     <!-- Admin Role Only -->
      <button *ngIf="role=='ADMIN'" (click)="openModalForQuizOperation()"
           class="top-right-button"><mat-icon>add_circle</mat-icon></button>
-     <button *ngIf="role=='USER'" (click)="openModalForQuizOperation()" class="top-right-button"><span
-               class="material-symbols-outlined">
-               filter_alt
-          </span></button>
+
+     <!-- User Role Only -->
+     <button *ngIf="role=='USER'" (click)="openModalForQuizOperation()" class="top-right-button">
+          <span class="material-symbols-outlined">filter_alt</span>
+     </button>
 
      <div class="view-toggle">
           <button mat-icon-button (click)="toggleView('grid')" [class.active]="viewMode === 'grid'">
@@ -16,7 +18,8 @@
      </div>
 
      <mat-list *ngIf="viewMode === 'list'; else gridView">
-          <div class="cat-head" mat-subheader>All Quizzes</div>
+          <div *ngIf="role=='USER'" class="cat-head" mat-subheader><button class="btn-refresh" (click)="refresh()"><span
+                         class="material-symbols-outlined">refresh</span></button></div>
           <mat-list-item *ngFor="let c of displayedQuizzesList" class="category-item">
                <div class="category-details">
                     <div class="cat-title" mat-card-subtitle>{{ c.title }} | {{ c.numberOfQuestions }} qs. | {{
@@ -42,7 +45,8 @@
      </mat-list>
 
      <ng-template #gridView>
-          <div class="cat-head" mat-subheader>All Quizzes</div>
+          <div *ngIf="role=='USER'" class="cat-head" mat-subheader><button class="btn-refresh" (click)="refresh()"><span
+                         class="material-symbols-outlined">refresh</span></button></div>
           <div class="grid-container">
                <mat-card *ngFor="let c of displayedQuizzesGrid" class="grid-item">
                     <div class="category-title" mat-card-title>{{ c.title }} | {{ c.numberOfQuestions }} qs. | {{
