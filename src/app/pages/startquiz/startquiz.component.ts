@@ -5,6 +5,8 @@ import { LoginService } from '../../services/login.service';
 import { RefreshService } from '../../services/refresh.service';
 import { QuestionService } from '../../services/question.service';
 import Swal from 'sweetalert2';
+import { QuizService } from '../../services/quiz.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-startquiz',
@@ -19,6 +21,8 @@ export class StartquizComponent {
     private logInService: LoginService,
     private refreshDetectionService: RefreshService,
     private questionService: QuestionService,
+    private quizService: QuizService,
+    private userService: UserService
   ) { }
 
   quizId: any = '';
@@ -30,6 +34,13 @@ export class StartquizComponent {
   timeLeft: any;
   totalTimeTaken: any
   currentQuestionIndex: number = 0;
+  quizScoreInfo = {
+    "user": {},
+    "quiz": {},
+    "score": 0,
+    "timeTaken": '',
+    "quizDate": {}
+  }
 
   ngOnInit() {
     this.quizId = this.rout.snapshot.params['quizId']
@@ -38,6 +49,7 @@ export class StartquizComponent {
       this.router.navigate(['/']);
     }
     this.getQuestionsOfQuiz()
+    this.getQuizById()
   }
 
   previousQuestion() {
@@ -111,10 +123,32 @@ export class StartquizComponent {
       if (selectedAnswer === correctAnswer)
         this.correctlySubmittedAnswersCount += 1;
     }
-    this.totalTimeTaken -= this.timeLeft 
+    this.totalTimeTaken -= this.timeLeft
+    this.saveQuizScore();
   }
 
   exit() {
     this.logInService.logOut()
+  }
+
+  getQuizById() {
+    this.quizService.getQuiz(this.quizId).subscribe(
+      (data:any) => {
+        this.quizScoreInfo.quiz = data.body
+      }
+    )
+  }
+
+  saveQuizScore() {
+    this.quizScoreInfo.user = this.logInService.getUserWithLimitedProps();
+    this.quizScoreInfo.score = this.correctlySubmittedAnswersCount
+    this.quizScoreInfo.timeTaken = this.formatTime(this.totalTimeTaken)
+    this.quizScoreInfo.quizDate = new Date()
+    console.log(this.quizScoreInfo)
+    this.userService.saveQuizScore(this.quizScoreInfo).subscribe(
+      (data:any) => {
+        console.log(data)
+      }
+    )
   }
 }

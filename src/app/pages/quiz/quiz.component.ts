@@ -36,6 +36,7 @@ export class QuizComponent {
   listPageSizeOptions: number[] = [3];
   role: any = this.logInService.getUserRole()
   categories: any = []
+  questionsOfQuizLength: any = 0
 
   quizFilter = {
     quizFilterParams: {
@@ -52,13 +53,24 @@ export class QuizComponent {
         this.getFilterParams();
         if (this.quizFilter.quizFilterParams.titleStartsWith !== '' ||
           this.quizFilter.quizFilterParams.titleContains !== '' || (this.quizFilter.quizFilterParams.categories !== null &&
-          this.quizFilter.quizFilterParams.categories.length > 0)) {
+            this.quizFilter.quizFilterParams.categories.length > 0)) {
           this.quizzes = data;
           this.displayedQuizzesGrid = this.quizzes;
           this.displayedQuizzesList = this.quizzes;
           return
         } else
           this.getAllQuizzes()
+      }
+    )
+  }
+
+  getQuestionsOfQuiz(quizId: any) {
+    this.questionService.getQuestionsOfQuiz(quizId).subscribe(
+      (data: any) => {
+        this.questionsOfQuizLength = data.body.length;
+      },
+      (error: any) => {
+        Swal.fire('Error', error.error.message ? error.error.message : 'Something went wrong', 'error')
       }
     )
   }
@@ -103,11 +115,33 @@ export class QuizComponent {
     )
   }
 
+  checkIfQuestionsAvailable(quiz: any) {
+    this.questionService.getQuestionsOfQuiz(quiz.quizId).subscribe(
+      (data: any) => {
+        this.questionsOfQuizLength = data.body.length;
+        if (this.questionsOfQuizLength < 1) {
+          this._snackBar.open("Sorry! No questions available under this quiz", '', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right'
+          });
+          return
+        }
+        this.openQuizInstruction(quiz)
+      },
+      (error: any) => {
+        if (error.status === 401)
+          this.logInService.logOut()
+        Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
+      }
+    )
+  }
+
   openModalForQuizOperation() {
     if (this.role == 'ADMIN')
       this.dialog.open(AddquizComponent);
     else if (this.role == 'USER')
-      this.dialog.open(QuizfilterComponent, {data: this.categories});
+      this.dialog.open(QuizfilterComponent, { data: this.categories });
   }
 
   openModalForQuestions(quiz: any) {
@@ -151,6 +185,6 @@ export class QuizComponent {
   }
 
   openQuizInstruction(quiz: any) {
-    this.dialog.open(QuizinstructionComponent, {data: quiz})
+    this.dialog.open(QuizinstructionComponent, { data: quiz })
   }
 }

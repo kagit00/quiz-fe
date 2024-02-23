@@ -47,6 +47,13 @@ export class LoginService {
     }
   }
 
+  public getUserWithLimitedProps() {
+    let user = this.getUser()
+    delete user.password
+    delete user.authorities
+    return user;
+  }
+
   public getUserRole()  {
     let user = this.getUser()
     let userRoles = []

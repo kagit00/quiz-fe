@@ -22,4 +22,8 @@ export class UserService {
   public deleteUser(username: string) {
     return this.http.delete(`${baseUrl}/users/${username}`);
   }
+
+  public saveQuizScore(quizScoreInfo: any) {
+    return this.http.post(`${baseUrl}/users/quiz/score`, quizScoreInfo);
+  }
 }
