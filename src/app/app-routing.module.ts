@@ -14,6 +14,7 @@ import { DonationComponent } from './pages/donation/donation.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
+import { StartquizComponent } from './pages/startquiz/startquiz.component';
 
 
 const routes: Routes = [
@@ -93,6 +94,12 @@ const routes: Routes = [
         component: QuizComponent,
       },
     ]
+  },
+  {
+    path: 'quiz/:quizId',
+    component: StartquizComponent,
+    canActivate: [UserGuard],
+    pathMatch: 'full'
   },
 ];
 

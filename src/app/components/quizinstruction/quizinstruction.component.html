@@ -1,0 +1,46 @@
+<mat-card class="profile-card">
+     <mat-card-content>
+          <h1 class="card-title">Quiz Instructions: {{quiz.title}}</h1>
+          <article>
+               <p class="paragraph">Welcome to the {{quiz.title}} Quiz! Test your knowledge on a variety of
+                    topics with these thought-provoking questions. Follow the instructions below to make the most of
+                    your quiz experience</p>
+               <hr>
+               <ul>
+                    <li>
+                         <p class="points"><b>Number of Questions:</b> This demo quiz consists of {{quiz.numberOfQuestions}} questions.</p>
+                    </li>
+                    <li>
+                         <p class="points"><b>Question Format:</b> Multiple-choice questions will be presented.
+                              Choose the most appropriate answer from the provided options.</p>
+                    </li>
+                    <li>
+                         <p class="points"><b>Time Limit: </b>There is no time limit for this demo quiz. Take your
+                              time to carefully read each question and select the best answer.</p>
+                    </li>
+                    <li>
+                         <p class="points"><b>Navigation: </b>You can navigate between questions using the "Next" and
+                              "Previous" buttons. Ensure you've selected your desired answer before moving on.</p>
+                    </li>
+                    <li>
+                         <p class="points"><b>Scoring: </b>Your score will be displayed at the end of the quiz. Each
+                              correct answer earns you {{eachQuestionMark}} point(s)</p>
+                    </li>
+                    <li>
+                         <p class="points"><b>Submission: </b>Once you've answered all the questions, click the
+                              "Submit" button to view your final score and see which questions you answered correctly
+                         </p>
+                    </li>
+                    <li>
+                         <p class="points"><b>Enjoy the Challenge: </b>This quiz covers a range of topics, so enjoy
+                              the challenge and see how well-rounded your general knowledge is!</p>
+                    </li>
+               </ul>
+               <hr>
+               <p class="paragraph">Remember, this is just a demo quiz for fun and learning. Get ready to test your
+                    knowledge and have a great time!</p>
+          </article>
+          <button routerLink="/quiz/{{quiz.quizId}}" (click)="close()" class="btn" mat-raised-button color="primary">Start</button>
+          <button class="btn" (click)="close()" mat-button color="primary">Cancel</button>
+     </mat-card-content>
+</mat-card>

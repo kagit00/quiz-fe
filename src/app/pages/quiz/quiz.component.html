@@ -36,7 +36,7 @@
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
 
                     <!-- User Role Only -->
-                    <button *ngIf="role=='USER'" class="btn-2" mat-raised-button color="primary"
+                    <button (click)="openQuizInstruction(c)" *ngIf="role=='USER'" class="btn-2" mat-raised-button color="primary"
                          type="submit">Attempt</button>
                </div>
           </mat-list-item>
@@ -63,7 +63,7 @@
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
 
                     <!-- User Role Only -->
-                    <button *ngIf="role=='USER'" class="btn-2" mat-raised-button color="primary"
+                    <button (click)="openQuizInstruction(c)" *ngIf="role=='USER'" class="btn-2" mat-raised-button color="primary"
                          type="submit">Attempt</button>
                </mat-card>
           </div>

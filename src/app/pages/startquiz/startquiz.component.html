@@ -1,0 +1,40 @@
+<div class="quiz-container mat-elevation-z2">
+     <mat-toolbar color="primary">
+          <span *ngIf="!quizSubmitted" class="title">Time Left: {{ formatTime(timeLeft) }}</span>
+          <span *ngIf="quizSubmitted" class="title">Time Taken: {{formatTime(totalTimeTaken)}}</span>
+     </mat-toolbar>
+
+     <div *ngIf="!quizSubmitted; else quizComplete">
+          <div class="question mat-elevation-z2">
+               <p>{{ questionsOfQuiz[currentQuestionIndex].content }}</p>
+               <div>
+                    <img *ngIf="questionsOfQuiz[currentQuestionIndex].imageUrl"
+                         src={{questionsOfQuiz[currentQuestionIndex].imageUrl}} height="130" alt="Question Image"
+                         class="question-image">
+               </div>
+               <div class="options">
+                    <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedOptions[currentQuestionIndex]">
+                         <mat-radio-button *ngFor="let option of questionsOfQuiz[currentQuestionIndex].options;"
+                              [value]="option">
+                              {{ option }}
+                         </mat-radio-button>
+                    </mat-radio-group>
+               </div>
+          </div>
+          <div class="button-container">
+               <button class="btn" mat-button color="primary" (click)="previousQuestion()"
+                    [disabled]="currentQuestionIndex === 0">Previous</button>
+               <button (click)="submitQuiz()" class="btn" mat-raised-button color="primary">Submit</button>
+               <button class="btn" mat-button color="primary" (click)="nextQuestion();"
+                    [disabled]="currentQuestionIndex === questionsOfQuiz.length-1">Next</button>
+          </div>
+     </div>
+     <ng-template #quizComplete>
+          <div class="quiz-complete-message">
+               <h2>Your Quiz Result</h2>
+               <p>Your score: {{ correctlySubmittedAnswersCount }}</p>
+               <p>Thank you for participating.</p>
+          </div>
+          <button class="btn" (click)="exit()" mat-raised-button color="primary">Exit</button>
+     </ng-template>
+</div>

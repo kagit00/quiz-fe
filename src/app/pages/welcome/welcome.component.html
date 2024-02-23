@@ -14,6 +14,6 @@
      <h3 class="card-title">Stay Informed</h3>
      <p class="paragraph">Regular updates and insights will be displayed here, keeping you informed about the latest developments and enhancements.</p>
     </article>
-    <button mat-raised-button color="primary">Get Started</button>
+    <button *ngIf="role == 'USER'" routerLink="/userdashboard/quiz" mat-raised-button color="primary">Get Started</button>
   </mat-card-content>
 </mat-card>

@@ -1,0 +1,19 @@
+.paragraph {
+     font-family: 'Quicksand', sans-serif;
+     font-size: 13px;
+     font-weight: bold;
+}
+
+.points {
+     font-size: 10px;
+}
+
+.card-title {
+     font-family: 'Quicksand', sans-serif;
+     font-size: 25px;
+     font-weight: bold;
+}
+
+.btn {
+     font-size: 10px;
+}

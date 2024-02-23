@@ -51,6 +51,9 @@ import { QuizfilterComponent } from './components/quizfilter/quizfilter.componen
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { QuizinstructionComponent } from './components/quizinstruction/quizinstruction.component';
+import { StartquizComponent } from './pages/startquiz/startquiz.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AddquestionComponent,
     UpdatequestionComponent,
     QuizfilterComponent,
+    QuizinstructionComponent,
+    StartquizComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -106,7 +112,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    NgSelectModule
+    NgSelectModule,
+    MatRadioModule
   ],
   providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]

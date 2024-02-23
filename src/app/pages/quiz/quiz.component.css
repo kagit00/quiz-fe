@@ -54,7 +54,6 @@
      }
 }
 
-
 .category-item {
      margin-bottom: 16px;
      height: auto;
@@ -149,8 +148,6 @@
      overflow-y: scroll;
      scrollbar-width: thin;
      scrollbar-color: white;
-
-
      &::-webkit-scrollbar {
           width: 8px;
      }

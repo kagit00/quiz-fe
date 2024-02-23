@@ -9,6 +9,8 @@ import { QustionsofquizComponent } from '../../components/qustionsofquiz/qustion
 import { QuizfilterComponent } from '../../components/quizfilter/quizfilter.component';
 import { FilterService } from '../../services/filter.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { QuizinstructionComponent } from '../../components/quizinstruction/quizinstruction.component';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-quiz',
@@ -21,7 +23,8 @@ export class QuizComponent {
     private dialog: MatDialog,
     private quizService: QuizService,
     private filterService: FilterService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private questionService: QuestionService
   ) { }
 
   quizzes: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
@@ -30,7 +33,7 @@ export class QuizComponent {
   gridPageSize: number = 6;
   listPageSize: number = 3;
   gridPageSizeOptions: number[] = [3, 6];
-  listPageSizeOptions: number[] = [2, 3];
+  listPageSizeOptions: number[] = [3];
   role: any = this.logInService.getUserRole()
   categories: any = []
 
@@ -145,5 +148,9 @@ export class QuizComponent {
     this.quizFilter.quizFilterParams.titleStartsWith = ''
     this.filterService.setFilterParams(this.quizFilter.quizFilterParams)
     this.filterService.setFilteredQuizzes(this.quizFilter.filterData)
+  }
+
+  openQuizInstruction(quiz: any) {
+    this.dialog.open(QuizinstructionComponent, {data: quiz})
   }
 }
