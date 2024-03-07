@@ -11,6 +11,7 @@ import { FilterService } from '../../services/filter.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuizinstructionComponent } from '../../components/quizinstruction/quizinstruction.component';
 import { QuestionService } from '../../services/question.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-quiz',
@@ -24,8 +25,12 @@ export class QuizComponent {
     private quizService: QuizService,
     private filterService: FilterService,
     private _snackBar: MatSnackBar,
-    private questionService: QuestionService
-  ) { }
+    private questionService: QuestionService,
+    private translate: TranslateService
+  ) {
+    translate.setDefaultLang('es');
+    translate.use('es');
+   }
 
   quizzes: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []
   displayedQuizzesGrid: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } }[] = []

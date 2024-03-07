@@ -22,7 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
      }
 
      private shouldAddHeaders(url: string): boolean {
-          const allowedUrls = [`/auth/current-user`, `/users/`, '/categories/', '/quizzes/', '/questions/'];
+          const allowedUrls = [`/auth/current-user`, `/users/`, '/categories/', '/quizzes/', '/questions/', '/bot/query'];
           return allowedUrls.some(allowedUrl => url.includes(allowedUrl));
      }
 }

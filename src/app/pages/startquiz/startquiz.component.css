@@ -7,13 +7,16 @@
 }
 
 .timer {
-  font-size: 18px;
+
   margin-right: auto;
 }
 
 .title {
   flex-grow: 1;
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
 .question {

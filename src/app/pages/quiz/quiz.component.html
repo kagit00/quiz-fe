@@ -49,10 +49,10 @@
                          class="material-symbols-outlined">refresh</span></button></div>
           <div class="grid-container">
                <mat-card *ngFor="let c of displayedQuizzesGrid" class="grid-item">
-                    <div class="category-title" mat-card-title>{{ c.title }} | {{ c.numberOfQuestions }} qs. | {{
+                    <div class="category-title" mat-card-title>{{ c.title | translate }} | {{ c.numberOfQuestions }} qs. | {{
                          c.maxMarks }} mks</div>
                     <div class="category-description" mat-card-subtitle>{{ c.category.title }}</div>
-                    <div class="cat-desc category-description" mat-card-content>{{ c.description }}</div>
+                    <div class="cat-desc category-description" mat-card-content>{{ c.description | translate }}</div>
 
                     <!-- Admin Role Only -->
                     <button *ngIf="role=='ADMIN'" (click)="openModalForQuestions(c)" class="btn-2" mat-raised-button

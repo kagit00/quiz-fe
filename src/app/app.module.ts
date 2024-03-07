@@ -13,7 +13,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from "@angular/material/core";
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -54,6 +54,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { QuizinstructionComponent } from './components/quizinstruction/quizinstruction.component';
 import { StartquizComponent } from './pages/startquiz/startquiz.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { BotComponent } from './components/bot/bot.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -85,6 +93,7 @@ import {MatRadioModule} from '@angular/material/radio';
     QuizfilterComponent,
     QuizinstructionComponent,
     StartquizComponent,
+    BotComponent,
    
   ],
   imports: [
@@ -113,7 +122,43 @@ import {MatRadioModule} from '@angular/material/radio';
     ReactiveFormsModule,
     MatAutocompleteModule,
     NgSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxUiLoaderModule.forRoot({  "bgsColor": "red",
+    "bgsOpacity": 0.5,
+    "bgsPosition": "bottom-right",
+    "bgsSize": 60,
+    "bgsType": "ball-spin-clockwise",
+    "blur": 5,
+    "delay": 0,
+    "fastFadeOut": true,
+    "fgsColor": "#ffffff",
+    "fgsPosition": "center-center",
+    "fgsSize": 60,
+    "fgsType": "three-strings",
+    "gap": 24,
+    "logoPosition": "center-center",
+    "logoSize": 120,
+    "logoUrl": "",
+    "masterLoaderId": "master",
+    "overlayBorderRadius": "0",
+    "overlayColor": "rgba(40, 40, 40, 0.8)",
+    "pbColor": "red",
+    "pbDirection": "ltr",
+    "pbThickness": 3,
+    "hasProgressBar": false,
+    "text": "Loading...",
+    "textColor": "#FFFFFF",
+    "textPosition": "center-center",
+    "maxTime": -1,
+    "minTime": 300}),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [provideNativeDateAdapter(), authInterCeptorProviders],
   bootstrap: [AppComponent]
