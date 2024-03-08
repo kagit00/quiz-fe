@@ -7,7 +7,7 @@ import { BotService } from '../../services/bot.service';
   styleUrl: './bot.component.css'
 })
 export class BotComponent {
-  constructor(private botService: BotService) {}
+  constructor(private botService: BotService) { }
   messages: { content: string; from: 'user' | 'bot' }[] = [];
   userInput: string = '';
   botMessage: any = '';
@@ -31,15 +31,15 @@ export class BotComponent {
 
   private simulateBotResponse(message: any) {
     setTimeout(() => {
-      this.generateBotResponse(message); 
+      this.generateBotResponse(message);
     }, 500);
   }
 
   private generateBotResponse(message: any): any {
-    this.botService.generateResponseFromBot({query: message}).subscribe(
+    this.botService.generateResponseFromBot({ query: message }).subscribe(
       (data: any) => {
         this.addBotMessage(data.body);
-      }, 
+      },
       (error: any) => {
         return '';
       }
