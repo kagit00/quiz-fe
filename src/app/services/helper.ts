@@ -1,2 +1,2 @@
-let baseUrl = 'https://quizapp-backend-5toi.onrender.com'
+let baseUrl = 'https://heroku-quiz-be-deploy-9c410880fec3.herokuapp.com'
 export default baseUrl;
