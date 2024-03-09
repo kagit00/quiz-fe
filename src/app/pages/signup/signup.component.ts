@@ -77,7 +77,7 @@ export class SignupComponent {
     this.userService.addUser(this.user).subscribe(
       (data) => {
         this.logInService.generateToken({
-          "username": this.user.username.replace(/^\s+|\s+$/g, ""),
+          "username": this.user.username,
           "password": this.user.password
         }).subscribe(
           (data: any) => {

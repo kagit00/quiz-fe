@@ -34,6 +34,8 @@ export class LoginComponent {
       return
     }
 
+    this.logInData.username = this.logInData.username.replace(/^\s+|\s+$/g, "")
+
     this.logInService.generateToken(this.logInData).subscribe (
       (data: any) => {
         this.logInService.logIn(data.body.token)
