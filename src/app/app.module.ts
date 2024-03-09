@@ -58,6 +58,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BotComponent } from './components/bot/bot.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -123,6 +124,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatAutocompleteModule,
     NgSelectModule,
     MatRadioModule,
+    MatTooltipModule,
     NgxUiLoaderModule.forRoot({  "bgsColor": "red",
     "bgsOpacity": 0.5,
     "bgsPosition": "bottom-right",

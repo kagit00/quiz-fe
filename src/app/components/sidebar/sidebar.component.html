@@ -1,20 +1,20 @@
 <mat-action-list class="notMobile"  [ngClass]="{'hide-element': isMobile}">
-     <button class="btn" mat-list-item routerLink={{homeLink}}>
+     <button matTooltip="Home" class="btn" mat-list-item routerLink={{homeLink}}>
           <span class="material-symbols-outlined">home</span>
      </button>
-     <button *ngIf="role=='ADMIN'" class="btn" mat-list-item routerLink={{categoriesLink}} routerLinkActive="active-link">
+     <button matTooltip="View Categories" *ngIf="role=='ADMIN'" class="btn" mat-list-item routerLink={{categoriesLink}} routerLinkActive="active-link">
           <span class="material-symbols-outlined">category</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{quizLink}} routerLinkActive="active-link">
+     <button matTooltip="View Quizzes" class="btn" mat-list-item routerLink={{quizLink}} routerLinkActive="active-link">
           <span class="material-symbols-outlined">quiz</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{profileLink}} routerLinkActive="active-link">
+     <button  matTooltip="View Profile" class="btn" mat-list-item routerLink={{profileLink}} routerLinkActive="active-link">
           <span class="material-symbols-outlined">person</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{delProfileLink}} routerLinkActive="active-link">
+     <button matTooltip="Delete Profile" class="btn" mat-list-item routerLink={{delProfileLink}} routerLinkActive="active-link">
           <span class="material-symbols-outlined">person_remove</span>
      </button>
-     <button class="btn" mat-list-item routerLink={{donationLink}} routerLinkActive="active-link">
+     <button matTooltip="Donate" class="btn" mat-list-item routerLink={{donationLink}} routerLinkActive="active-link">
           <span class="material-symbols-outlined">volunteer_activism</span>
      </button>
 </mat-action-list>
