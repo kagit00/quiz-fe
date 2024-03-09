@@ -17,10 +17,10 @@ export class SignupComponent {
   ) { }
 
   public user = {
-    username: ''.replace(/^\s+/, ""),
-    firstName: ''.replace(/^\s+/, ""),
-    lastName: ''.replace(/^\s+/, ""),
-    email: ''.replace(/^\s+/, ""),
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
     password: '',
     dateOfBirth: '',
     phone: '',
@@ -69,11 +69,16 @@ export class SignupComponent {
       return
     }
 
+    this.user.username = this.user.username.replace(/^\s+|\s+$/g, "")
+    this.user.firstName = this.user.firstName.replace(/^\s+|\s+$/g, "")
+    this.user.lastName = this.user.lastName.replace(/^\s+|\s+$/g, "")
+    this.user.email = this.user.email.replace(/^\s+|\s+$/g, "")
+
     this.userService.addUser(this.user).subscribe(
       (data) => {
         this.logInService.generateToken({
-          "username": this.user.username.replace(/^\s+/, ""),
-          "password": this.user.password.replace(/^\s+/, "")
+          "username": this.user.username.replace(/^\s+|\s+$/g, ""),
+          "password": this.user.password
         }).subscribe(
           (data: any) => {
             this.logInService.logIn(data.body.token)
