@@ -73,6 +73,7 @@ export class SignupComponent {
     this.user.firstName = this.user.firstName.replace(/^\s+|\s+$/g, "")
     this.user.lastName = this.user.lastName.replace(/^\s+|\s+$/g, "")
     this.user.email = this.user.email.replace(/^\s+|\s+$/g, "")
+    console.log(this.user)
 
     this.userService.addUser(this.user).subscribe(
       (data) => {
