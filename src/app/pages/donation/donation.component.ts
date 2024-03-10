@@ -45,7 +45,7 @@ export class DonationComponent {
             currency: data.body.currency,
             orderId: data.body.orderId,
             prefill: { 
-              name: this.user.firstName + ' ' + this.user.lastName,
+              name: this.user.firstName + ' ' + this.user.lastName? this.user.lastName : '',
               email: this.user.email,
               contact: this.user.phone
             },
