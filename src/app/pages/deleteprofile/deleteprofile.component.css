@@ -10,12 +10,14 @@
 }
 
 .card-img-top {
-  height: 200px;
+  height: 100px;
   object-fit: cover;
 }
 
-mat-form-field {
+mat-form-field, mat-label {
   padding: 5px;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .card-title {
