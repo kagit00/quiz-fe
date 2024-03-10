@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { DonateService } from '../../services/donate.service';
 declare var Razorpay: any;
 import { LoginService } from '../../services/login.service';
+import Swal from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-donation',
@@ -9,7 +11,7 @@ import { LoginService } from '../../services/login.service';
   styleUrl: './donation.component.css'
 })
 export class DonationComponent {
-  constructor(private donationService: DonateService, private login: LoginService) { }
+  constructor(private donationService: DonateService, private login: LoginService, private _snackBar: MatSnackBar) { }
   wishToDonate = false;
   amount = 1
   options: any = {}
@@ -19,6 +21,9 @@ export class DonationComponent {
     this.login.getCurrentUser().subscribe(
       (data: any) => {
         this.user = data.body;
+      },
+      (error: any) => {
+        console.log("Error getting current user");
       }
     )
   }
@@ -40,7 +45,7 @@ export class DonationComponent {
             currency: data.body.currency,
             orderId: data.body.orderId,
             prefill: { 
-              name: this.user.firstName,
+              name: this.user.firstName + ' ' + this.user.lastName,
               email: this.user.email,
               contact: this.user.phone
             },
@@ -58,7 +63,7 @@ export class DonationComponent {
         }
       },
       (error: any) => {
-
+        Swal.fire('Error', error.error.message? error.error.message: 'Something went wrong', 'error');
       }
     )
   }
