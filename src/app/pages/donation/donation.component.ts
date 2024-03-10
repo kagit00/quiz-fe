@@ -35,6 +35,7 @@ export class DonationComponent {
   checkout() {
     this.donationService.createOrder(this.amount).subscribe(
       (data: any) => {
+        console.log(this.user.lastName)
         if (data.body.status == "created") {
           this.options = {
             image: '',
@@ -45,7 +46,7 @@ export class DonationComponent {
             currency: data.body.currency,
             orderId: data.body.orderId,
             prefill: { 
-              name: this.user.firstName + ' ' + this.user.lastName? this.user.lastName : '',
+              name: '',
               email: this.user.email,
               contact: this.user.phone
             },
