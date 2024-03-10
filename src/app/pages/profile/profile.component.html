@@ -1,5 +1,5 @@
 <mat-card class="profile-card">
-  <img src="../../../assets/img/0800.png" alt="Profile Picture" class="card-img-top">
+  <img src="../../../assets/img/profile.jpg" alt="Profile Picture" class="card-img-top">
   <mat-card-content>
     <h1 class="card-title">Profile Summary</h1>
     <article>
@@ -40,8 +40,8 @@
         <textarea matInput name="about" [(ngModel)]="user.about" [disabled]="!isEditMode"></textarea>
       </mat-form-field>
       <div>
-        <button mat-raised-button color="primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Update Profile</button>
-        <button mat-raised-button color="primary" *ngIf="isEditMode" (click)="updateProfile()">Submit Update</button>
+        <button class="btn" mat-raised-button color="primary" *ngIf="!isEditMode" (click)="toggleEditMode()">Update Profile</button>
+        <button class="btn" mat-raised-button color="primary" *ngIf="isEditMode" (click)="updateProfile()">Submit Update</button>
       </div>
 
     </form>

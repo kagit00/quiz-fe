@@ -1,6 +1,6 @@
 
 <mat-card class="profile-card">
-  <img src="../../../assets/img/0800.png" alt="Profile Picture" class="card-img-top">
+  <img src="../../../assets/img/profile.jpg" alt="Profile Picture" class="card-img-top">
   <mat-card-content>
     <h1 class="card-title">Delete Account Page:</h1>
     <article>
@@ -9,7 +9,7 @@
      <p class="paragraph">Before proceeding, ensure you've backed up any crucial information. Once deleted, your account cannot be recovered. Think carefully before making this decision.</p>
      <p class="paragraph"><b>We value your presence, and if you change your mind, you're always welcome back.</b></p>
     </article>
-    <button *ngIf="!iSDeleteMode" (click)="deleteAccount()" mat-raised-button color="warn">Delete Account</button>
+    <button class="btn" *ngIf="!iSDeleteMode" (click)="deleteAccount()" mat-raised-button color="warn">Delete Account</button>
     <form *ngIf="iSDeleteMode" (ngSubmit)="submitForm()">
           <div class="form-row">
                <mat-form-field appearance="fill">
@@ -17,7 +17,7 @@
                     <input matInput name="password" [(ngModel)]="username" required>
                </mat-form-field>
           </div>
-          <button mat-raised-button color="warn" type="submit">Proceed</button>
+          <button class="btn" mat-raised-button color="warn" type="submit">Proceed</button>
      </form>
   </mat-card-content>
 </mat-card>
