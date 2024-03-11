@@ -96,7 +96,7 @@ mat-label {
 }
 
 .cannot_add {
-     font-size: 10px;
-     font-family: 'Quicksand', sans-serif;
+     font-size: 9px;
+     color: red;
      font-weight: bold;
 }
