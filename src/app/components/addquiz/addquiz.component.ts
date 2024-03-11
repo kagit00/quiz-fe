@@ -64,7 +64,7 @@ export class AddquizComponent {
     }
 
     if (this.quiz.numberOfQuestions <= 0 || this.quiz.description == null) {
-      this._snackBar.open("Description is required.", '', {
+      this._snackBar.open("Number of questions is required.", '', {
         duration: 3000,
         verticalPosition: 'top',
         horizontalPosition: 'right'
@@ -73,7 +73,7 @@ export class AddquizComponent {
     }
 
     if (this.quiz.maxMarks <=0 || this.quiz.maxMarks == null) {
-      this._snackBar.open("Description is required.", '', {
+      this._snackBar.open("Maximum marks required.", '', {
         duration: 3000,
         verticalPosition: 'top',
         horizontalPosition: 'right'
