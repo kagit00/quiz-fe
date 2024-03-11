@@ -44,7 +44,7 @@
      </mat-list>
 
      <ng-template #gridView>
-          <div *ngIf="role=='USER'" class="cat-head" mat-subheader><button class="btn-refresh" (click)="refresh()"><span
+          <div *ngIf="role=='USER'" class="cat-head" mat-subheader><button matTooltip="Refresh Quizzes" class="btn-refresh" (click)="refresh()"><span
                          class="material-symbols-outlined">refresh</span></button></div>
           <div class="grid-container">
                <mat-card *ngFor="let c of displayedQuizzesGrid" class="grid-item">
