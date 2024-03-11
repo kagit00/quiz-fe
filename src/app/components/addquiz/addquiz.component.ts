@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { QuizService } from '../../services/quiz.service';
 import { LoginService } from '../../services/login.service';
+import lodash from 'lodash';
 
 @Component({
   selector: 'app-addquiz',
@@ -62,7 +63,25 @@ export class AddquizComponent {
       return;
     }
 
-    if (this.quiz.category == null) {
+    if (this.quiz.numberOfQuestions <= 0 || this.quiz.description == null) {
+      this._snackBar.open("Description is required.", '', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+      return;
+    }
+
+    if (this.quiz.maxMarks <=0 || this.quiz.maxMarks == null) {
+      this._snackBar.open("Description is required.", '', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+      return;
+    }
+
+    if (this.selectedOption == null || lodash.isEmpty(this.selectedOption)) {
       this._snackBar.open("Quiz Category is required.", '', {
         duration: 3000,
         verticalPosition: 'top',
