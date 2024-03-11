@@ -45,7 +45,23 @@ export class UpdatequizComponent {
       });
       return;
     }
-    
+    if (this.quiz.numberOfQuestions <= 0 || this.quiz.numberOfQuestions == null) {
+      this._snackBar.open("Number of questions is required.", '', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+      return;
+    }
+
+    if (this.quiz.maxMarks <=0 || this.quiz.maxMarks == null) {
+      this._snackBar.open("Maximum marks required.", '', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+      return;
+    }
     this.quizService.updateQuiz(this.quiz).subscribe(
       (data: any) => {
         Swal.fire('Success', 'Quiz Got Updated Successfully', 'success')

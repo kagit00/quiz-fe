@@ -63,7 +63,7 @@ export class AddquizComponent {
       return;
     }
 
-    if (this.quiz.numberOfQuestions <= 0 || this.quiz.description == null) {
+    if (this.quiz.numberOfQuestions <= 0 || this.quiz.numberOfQuestions == null) {
       this._snackBar.open("Number of questions is required.", '', {
         duration: 3000,
         verticalPosition: 'top',
