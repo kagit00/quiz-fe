@@ -24,21 +24,7 @@
                     </mat-form-field>
                </div>
 
-               <!-- <div class="form-fields-container">
-                    <mat-form-field *ngFor="let option of question.options; let i = index">
-                         <mat-label for="option">Option {{i + 1}}</mat-label>
-                         <input type="text" id="option" [(ngModel)]="option" name="options" />
-                    </mat-form-field>
-               </div> -->
-
-               <!-- <mat-form-field>
-                    <mat-select placeholder="Select Option" [(ngModel)]="selectedOption"
-                         [ngModelOptions]="{ standalone: true }" (ngModelChange)="onOptionSelected()">
-                         <mat-option *ngFor="let c of categories" [value]="c">{{ c.title }}</mat-option>
-                    </mat-select>
-               </mat-form-field> -->
-
-               <button mat-raised-button color="primary" (click)="close()">Submit</button>
+               <button clas="btn" mat-raised-button color="primary">Submit</button>
           </form>
      </mat-card-content>
 </mat-card>

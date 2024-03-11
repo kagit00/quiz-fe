@@ -30,7 +30,7 @@ export class AddquestionComponent {
       title: '',
       description: '',
       maxMarks: 0,
-      numberOfQuestions: 10,
+      numberOfQuestions: 0,
       category: {
         cid: '',
         title: ''
@@ -54,6 +54,7 @@ export class AddquestionComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return;
     }
     
     this.question.options = [this.option1, this.option2, this.option3, this.option4]
@@ -63,6 +64,7 @@ export class AddquestionComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return
     }
 
     if (this.question.correctAnswer == null || this.question.correctAnswer == '') {
@@ -71,6 +73,7 @@ export class AddquestionComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return
     }
 
     this.questionService.addQuestion(this.question).subscribe(

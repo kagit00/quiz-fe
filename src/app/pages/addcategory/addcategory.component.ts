@@ -25,6 +25,7 @@ export class AddcategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return
     }
 
     if (this.category.description == '' || this.category.description == null) {
@@ -33,6 +34,7 @@ export class AddcategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return
     }
 
     this.categoryService.addCategory(this.category).subscribe(
@@ -41,7 +43,7 @@ export class AddcategoryComponent {
       },
       (error: any) => {
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
-        this.close();
+        this.close()
       }
     )
   }

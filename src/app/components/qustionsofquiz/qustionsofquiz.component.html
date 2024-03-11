@@ -27,6 +27,6 @@
                          type="submit"><mat-icon>update</mat-icon></button>
                </div>
           </div>
-          <button *ngIf="questions.length <= 10" (click)="openModalForQuestionAddition(quiz)" mat-raised-button color="primary" (click)="close()">Add</button>
+          <button *ngIf="questions.length <= questionsLengthForQuiz" (click)="openModalForQuestionAddition(quiz)" mat-raised-button color="primary" (click)="close()">Add</button>
      </mat-card-content>
 </mat-card>

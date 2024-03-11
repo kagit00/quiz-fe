@@ -26,3 +26,10 @@ mat-form-field {
      font-size: 12px;
      font-weight: bold;
 }
+
+.btn {
+  padding: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+}

@@ -34,6 +34,7 @@ export class UpdatequizComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return;
     }
 
     if (this.quiz.description == '' || this.quiz.description == null) {
@@ -42,13 +43,17 @@ export class UpdatequizComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return;
     }
+    
     this.quizService.updateQuiz(this.quiz).subscribe(
       (data: any) => {
         Swal.fire('Success', 'Quiz Got Updated Successfully', 'success')
+        this.close()
       },
       (error: any) => {
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
+        this.close()
       }
     )
   }

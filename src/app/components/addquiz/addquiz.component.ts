@@ -50,6 +50,7 @@ export class AddquizComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return;
     }
 
     if (this.quiz.description == '' || this.quiz.description == null) {
@@ -58,6 +59,7 @@ export class AddquizComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return;
     }
 
     this.quizService.addQuiz(this.quiz).subscribe(

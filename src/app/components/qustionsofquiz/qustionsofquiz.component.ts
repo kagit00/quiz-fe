@@ -27,6 +27,7 @@ export class QustionsofquizComponent {
   }
 
   questions: { "questionId": string, "content": string, "options": any, "imageUrl": string | undefined, "correctAnswer": string, quiz: { quizId: string, title: string, description: string, maxMarks: number, numberOfQuestions: number, category: { cid: string, title: string, description: string } } }[] = []
+  questionsLengthForQuiz: any = 0;
 
   close(): void {
     this.dialogRefForQuiz.close();
@@ -46,6 +47,7 @@ export class QustionsofquizComponent {
   getAllQuestionsOfQuiz() {
     this.questionService.getQuestionsOfQuiz(this.quiz.quizId).subscribe(
       (data: any) => {
+        this.questionsLengthForQuiz = this.quiz.numberOfQuestions
         this.questions = data.body
       },
       (error: any) => {

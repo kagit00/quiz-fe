@@ -32,6 +32,7 @@ export class UpdatecategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return;
     }
 
     if (this.category.description == '' || this.category.description == null) {
@@ -40,13 +41,17 @@ export class UpdatecategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
+      return;
     }
+
     this.categoryService.updateCategory(this.category).subscribe(
       (data: any) => {
         Swal.fire('Success', 'Category Got Updated Successfully', 'success')
+        this.close()
       },
       (error: any) => {
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
+        this.close()
       }
     )
   }
