@@ -1,23 +1,23 @@
 <mat-card class="profile-card">
      <!-- Admin Role Only -->
-     <button *ngIf="role=='ADMIN'" (click)="openModalForQuizAddition()"
+     <button matTooltip="Add Quiz" *ngIf="role=='ADMIN'" (click)="openModalForQuizAddition()"
           class="top-right-button-add"><mat-icon>add_circle</mat-icon></button>
 
-     <button (click)="openModalForQuizFiltration()" class="top-right-button">
+     <button matTooltip="Filter Quizzes" (click)="openModalForQuizFiltration()" class="top-right-button">
           <span class="material-symbols-outlined">filter_alt</span>
      </button>
 
      <div class="view-toggle">
-          <button mat-icon-button (click)="toggleView('grid')" [class.active]="viewMode === 'grid'">
+          <button matTooltip="Grid View" mat-icon-button (click)="toggleView('grid')" [class.active]="viewMode === 'grid'">
                <mat-icon>grid_view</mat-icon>
           </button>
-          <button mat-icon-button (click)="toggleView('list')" [class.active]="viewMode === 'list'">
+          <button matTooltip="List View" mat-icon-button (click)="toggleView('list')" [class.active]="viewMode === 'list'">
                <mat-icon>list</mat-icon>
           </button>
      </div>
 
      <mat-list *ngIf="viewMode === 'list'; else gridView">
-          <div *ngIf="role=='USER'" class="cat-head" mat-subheader><button class="btn-refresh" (click)="refresh()"><span
+          <div *ngIf="role=='USER'" class="cat-head" mat-subheader><button matTooltip="Refresh Quizzes" class="btn-refresh" (click)="refresh()"><span
                          class="material-symbols-outlined">refresh</span></button></div>
           <mat-list-item *ngFor="let c of displayedQuizzesList" class="category-item">
                <div class="category-details">
@@ -29,9 +29,9 @@
                     <!-- Admin Role Only -->
                     <button *ngIf="role=='ADMIN'" (click)="openModalForQuestions(c)" class="btn-2" mat-raised-button
                          color="primary" type="submit">Questions</button>
-                    <button *ngIf="role=='ADMIN'" (click)="openModalForQuizUpdate(c)" class="top-right-button-2"
+                    <button matTooltip="Update Quiz" *ngIf="role=='ADMIN'" (click)="openModalForQuizUpdate(c)" class="top-right-button-2"
                          type="submit"><mat-icon>update</mat-icon></button>
-                    <button *ngIf="role=='ADMIN'" (click)="deleteQuiz(c.quizId)" class="top-right-button-3"
+                    <button matTooltip="Delete Quiz" *ngIf="role=='ADMIN'" (click)="deleteQuiz(c.quizId)" class="top-right-button-3"
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
 
                     <!-- User Role Only -->
@@ -56,9 +56,9 @@
                     <!-- Admin Role Only -->
                     <button *ngIf="role=='ADMIN'" (click)="openModalForQuestions(c)" class="btn-2" mat-raised-button
                          color="primary" type="submit">Questions</button>
-                    <button *ngIf="role=='ADMIN'" (click)="openModalForQuizUpdate(c)" class="top-right-button-3"
+                    <button matTooltip="Update Quiz" *ngIf="role=='ADMIN'" (click)="openModalForQuizUpdate(c)" class="top-right-button-3"
                          type="submit"><mat-icon>update</mat-icon></button>
-                    <button *ngIf="role=='ADMIN'" (click)="deleteQuiz(c.quizId)" class="top-right-button-4"
+                    <button matTooltip="Delete Quiz" *ngIf="role=='ADMIN'" (click)="deleteQuiz(c.quizId)" class="top-right-button-4"
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
 
                     <!-- User Role Only -->
