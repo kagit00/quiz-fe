@@ -38,3 +38,10 @@ mat-form-field {
   font-size: 10px;
   font-weight: bold;
 }
+
+
+mat-select {
+     font-family: 'Quicksand', sans-serif;
+     font-size: 12px;
+     font-weight: bold;
+}

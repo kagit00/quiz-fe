@@ -62,6 +62,15 @@ export class AddquizComponent {
       return;
     }
 
+    if (this.quiz.category == null) {
+      this._snackBar.open("Quiz Category is required.", '', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+      return;
+    }
+
     this.quizService.addQuiz(this.quiz).subscribe(
       (data: any) => {
         this.close()
