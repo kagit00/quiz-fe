@@ -34,7 +34,6 @@ export class UpdatequizComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
-      return
     }
 
     if (this.quiz.description == '' || this.quiz.description == null) {
@@ -43,7 +42,6 @@ export class UpdatequizComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
-      return
     }
     this.quizService.updateQuiz(this.quiz).subscribe(
       (data: any) => {

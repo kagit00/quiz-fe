@@ -25,7 +25,6 @@ export class AddcategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
-      return
     }
 
     if (this.category.description == '' || this.category.description == null) {
@@ -34,7 +33,6 @@ export class AddcategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
-      return
     }
 
     this.categoryService.addCategory(this.category).subscribe(

@@ -32,7 +32,6 @@ export class UpdatecategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
-      return
     }
 
     if (this.category.description == '' || this.category.description == null) {
@@ -41,7 +40,6 @@ export class UpdatecategoryComponent {
         verticalPosition: 'top',
         horizontalPosition: 'right'
       });
-      return
     }
     this.categoryService.updateCategory(this.category).subscribe(
       (data: any) => {
