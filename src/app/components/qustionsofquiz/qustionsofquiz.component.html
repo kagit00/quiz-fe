@@ -28,6 +28,6 @@
                </div>
           </div>
           <button *ngIf="questions.length < questionsLengthForQuiz" (click)="openModalForQuestionAddition(quiz)" mat-raised-button color="primary" (click)="close()">Add</button>
-          <span class="cannot_add" *ngIf="questions.length >= questionsLengthForQuiz">*Note: You cannot add more questions to this quiz.</span>
+          <span class="cannot_add" *ngIf="questions.length >= questionsLengthForQuiz">*Note: You cannot add more questions to this quiz since maximum count has been reached.</span>
      </mat-card-content>
 </mat-card>
