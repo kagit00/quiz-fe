@@ -64,7 +64,7 @@ export class UpdatequizComponent {
     }
     this.quizService.updateQuiz(this.quiz).subscribe(
       (data: any) => {
-        Swal.fire('Success', 'Quiz Got Updated Successfully', 'success')
+        Swal.fire('Success', 'Quiz Got Updated Successfully. Please Refresh To Reflect Changes.', 'success')
         this.close()
       },
       (error: any) => {

@@ -1,12 +1,12 @@
 <mat-card class="profile-card">
-     <button (click)="openModalForCategoryAddition()"
+     <button matTooltip="Add Category" (click)="openModalForCategoryAddition()"
           class="top-right-button"><mat-icon>playlist_add</mat-icon></button>
 
      <div class="view-toggle">
-          <button mat-icon-button (click)="toggleView('grid')" [class.active]="viewMode === 'grid'">
+          <button matTooltip="Grid View" mat-icon-button (click)="toggleView('grid')" [class.active]="viewMode === 'grid'">
                <mat-icon>grid_view</mat-icon>
           </button>
-          <button mat-icon-button (click)="toggleView('list')" [class.active]="viewMode === 'list'">
+          <button matTooltip="List View" mat-icon-button (click)="toggleView('list')" [class.active]="viewMode === 'list'">
                <mat-icon>list</mat-icon>
           </button>
      </div>
@@ -17,9 +17,9 @@
                <div class="category-details">
                     <div class="cat-title" mat-card-subtitle>{{ c.title }}</div>
                     <div class="category-description" mat-card-content>{{ c.description }}</div>
-                    <button (click)="openModalForCategoryUpdate(c)" class="btn-2" mat-raised-button color="primary"
+                    <button matTooltip="Update Category" (click)="openModalForCategoryUpdate(c)" class="btn-2" mat-raised-button color="primary"
                          type="submit">Update</button>
-                    <button (click)="deleteCategoryByCategoryCode(c.cid)" class="top-right-button-3"
+                    <button matTooltip="Delete Category" (click)="deleteCategoryByCategoryCode(c.cid)" class="top-right-button-3"
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
                </div>
           </mat-list-item>
@@ -33,9 +33,9 @@
                <mat-card *ngFor="let c of displayedCategoriesGrid" class="grid-item">
                     <div class="cat-title" mat-card-subtitle>{{ c.title }}</div>
                     <div class="cat-desc" mat-card-content>{{ c.description }}</div>
-                    <button (click)="openModalForCategoryUpdate(c)" class="btn-2" mat-raised-button color="primary"
+                    <button matTooltip="Update Category" (click)="openModalForCategoryUpdate(c)" class="btn-2" mat-raised-button color="primary"
                          type="submit">Update</button>
-                    <button (click)="deleteCategoryByCategoryCode(c.cid)" class="top-right-button-4"
+                    <button matTooltip="Delete Category" (click)="deleteCategoryByCategoryCode(c.cid)" class="top-right-button-4"
                          type="submit"><mat-icon>delete_forever</mat-icon></button>
                </mat-card>
           </div>

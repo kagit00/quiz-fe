@@ -78,7 +78,7 @@ export class AddquestionComponent {
 
     this.questionService.addQuestion(this.question).subscribe(
       (data: any) => {
-        Swal.fire('Success', 'Question Added Successfully', 'success')
+        Swal.fire('Success', 'Question Added Successfully. Please Refresh To Reflect Changes.', 'success')
         this.close()
       },
       (error: any) => {

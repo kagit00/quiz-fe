@@ -5,6 +5,7 @@ import { LoginService } from '../../services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddcategoryComponent } from '../addcategory/addcategory.component';
 import { UpdatecategoryComponent } from '../../components/updatecategory/updatecategory.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { UpdatecategoryComponent } from '../../components/updatecategory/updatec
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
-  constructor(private categoryService: CategoryService, private logInService: LoginService, private dialog: MatDialog) { }
+  constructor(private categoryService: CategoryService, private logInService: LoginService, private dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   categories: { cid: string, title: string, description: string }[] = []
   displayedCategoriesGrid: { cid: string, title: string, description: string }[] = []
@@ -40,7 +41,7 @@ export class CategoriesComponent {
   }
 
   openModalForCategoryUpdate(category: any) {
-    this.dialog.open(UpdatecategoryComponent, {data: category});
+    this.dialog.open(UpdatecategoryComponent, { data: category });
   }
 
   getAllCategories() {
@@ -73,7 +74,7 @@ export class CategoriesComponent {
   deleteCategoryByCategoryCode(cid: string) {
     this.categoryService.deleteCategory(cid).subscribe(
       (data: any) => {
-        Swal.fire('Success', 'Category Got Deleted Successfully', 'success')
+        Swal.fire('Success', 'Category Got Deleted Successfully. Please Refresh To Reflect Changes.', 'success')
       },
       (error: any) => {
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')

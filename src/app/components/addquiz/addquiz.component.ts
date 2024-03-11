@@ -92,6 +92,7 @@ export class AddquizComponent {
 
     this.quizService.addQuiz(this.quiz).subscribe(
       (data: any) => {
+        Swal.fire('Success', 'Quiz Got Added Successfully. Please Refresh To Reflect Changes.', 'success')
         this.close()
       },
       (error: any) => {

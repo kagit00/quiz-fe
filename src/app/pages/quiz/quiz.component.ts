@@ -173,7 +173,7 @@ export class QuizComponent {
   deleteQuiz(id: string) {
     this.quizService.delete(id).subscribe(
       (data: any) => {
-        Swal.fire('Success', 'Quiz Got Deleted Successfully', 'success')
+        Swal.fire('Success', 'Quiz Got Deleted Successfully. Please Refresh To Reflect Changes.', 'success')
       },
       (error: any) => {
         Swal.fire('Oops', error.error.errorMsg ? error.error.errorMsg : 'Something went wrong', 'error')
