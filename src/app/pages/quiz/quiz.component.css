@@ -105,6 +105,14 @@
      border: 5px solid transparent;
 }
 
+.top-right-button-add {
+     position: absolute;
+     top: 10px;
+     right: 50px;
+     background-color: transparent;
+     border: 5px solid transparent;
+}
+
 .top-right-button-refresh {
      position: absolute;
      top: 5px;

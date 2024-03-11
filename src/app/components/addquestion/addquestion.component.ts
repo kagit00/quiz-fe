@@ -79,9 +79,11 @@ export class AddquestionComponent {
     this.questionService.addQuestion(this.question).subscribe(
       (data: any) => {
         Swal.fire('Success', 'Question Added Successfully', 'success')
+        this.close()
       },
       (error: any) => {
         Swal.fire('Error', error.error.message ? error.error.message : 'Something went wrong', 'error')
+        this.close()
       }
     )
   }

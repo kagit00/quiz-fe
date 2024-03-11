@@ -142,11 +142,12 @@ export class QuizComponent {
     )
   }
 
-  openModalForQuizOperation() {
-    if (this.role == 'ADMIN')
-      this.dialog.open(AddquizComponent);
-    else if (this.role == 'USER')
-      this.dialog.open(QuizfilterComponent, { data: this.categories });
+  openModalForQuizAddition() {
+    this.dialog.open(AddquizComponent);
+  }
+
+  openModalForQuizFiltration() {
+    this.dialog.open(QuizfilterComponent, { data: this.categories });
   }
 
   openModalForQuestions(quiz: any) {

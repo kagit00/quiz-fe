@@ -1,10 +1,9 @@
 <mat-card class="profile-card">
      <!-- Admin Role Only -->
-     <button *ngIf="role=='ADMIN'" (click)="openModalForQuizOperation()"
-          class="top-right-button"><mat-icon>add_circle</mat-icon></button>
+     <button *ngIf="role=='ADMIN'" (click)="openModalForQuizAddition()"
+          class="top-right-button-add"><mat-icon>add_circle</mat-icon></button>
 
-     <!-- User Role Only -->
-     <button *ngIf="role=='USER'" (click)="openModalForQuizOperation()" class="top-right-button">
+     <button (click)="openModalForQuizFiltration()" class="top-right-button">
           <span class="material-symbols-outlined">filter_alt</span>
      </button>
 
