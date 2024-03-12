@@ -7,7 +7,8 @@
 
      <div class="chat-messages">
           <div *ngFor="let message of messages" style="margin-bottom: 10px;"
-          [ngClass]="{'chat-list-item-user': message.from === 'user', 'chat-list-item-bot': message.from === 'bot'}" class="chat-messages">
+               [ngClass]="{'chat-list-item-user': message.from === 'user', 'chat-list-item-bot': message.from === 'bot'}"
+               class="chat-messages">
                <span>{{message.content}}</span>
           </div>
      </div>
@@ -16,8 +17,11 @@
           <mat-form-field appearance="fill" class="chat-input-field">
                <mat-label class="chat-input-field">Type your message...</mat-label>
                <input matInput [(ngModel)]="userInput" (keydown.enter)="sendMessage()" />
-               <button mat-icon-button matSuffix (click)="sendMessage()">
-                    <mat-icon>send</mat-icon>
+               <button *ngIf="listnerStarted" mat-icon-button matSuffix (click)="handleListening(); startListening();">
+                    <mat-icon>mic</mat-icon>
+               </button>
+               <button *ngIf="listenerStopped" mat-button
+                    (click)="handleListening(); stopListening();"><mat-icon>stop</mat-icon>
                </button>
           </mat-form-field>
      </div>

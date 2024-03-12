@@ -3,7 +3,7 @@
      <main>
           <div class="container" fxLayout="column" fxLayoutAlign="center center">
                <h1 class="heading">Register </h1>
-                <div class="registration_summary">
+               <div class="registration_summary">
                     <p>Your information will help us tailor our services to better suit your needs. Rest assured, all
                          provided information will be kept confidential and will not be shared with any third parties.
                     </p>
@@ -66,9 +66,11 @@
                               <textarea matInput name="about" [(ngModel)]="user.about" type="number"
                                    placeholder="Enter About"></textarea>
                          </mat-form-field>
+                         <button *ngIf="listnerStarted" mat-button (click)="handleListening(); startListening();"><mat-icon>mic</mat-icon></button>
+                         <button *ngIf="listenerStopped" mat-button (click)="handleListening(); stopListening();"><mat-icon>stop</mat-icon></button>
                     </div>
 
-                    <button mat-raised-button color="primary" type="submit">Register</button>
+                    <button class="btn" mat-raised-button color="primary" type="submit">Register</button>
                </form>
           </div>
 

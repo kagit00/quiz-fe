@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { BotService } from '../../services/bot.service';
 
 @Component({
@@ -7,11 +7,66 @@ import { BotService } from '../../services/bot.service';
   styleUrl: './bot.component.css'
 })
 export class BotComponent {
-  constructor(private botService: BotService) { }
+  constructor(private botService: BotService) {
+    this.zone = new NgZone({ enableLongStackTrace: false });
+    this.initSpeechRecognition();
+  }
   messages: { content: string; from: 'user' | 'bot' }[] = [];
   userInput: string = '';
   botMessage: any = '';
   showChatWindow: boolean = false;
+
+  listnerStarted: boolean = true;
+  listenerStopped: boolean = false;
+  recognition: any;
+  zone: any;
+  interimTranscript = ''
+
+  initSpeechRecognition() {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      this.recognition = new SpeechRecognition();
+      this.recognition.continuous = true;
+      this.recognition.interimResults = true;
+      this.recognition.lang = 'en'; // Set the language as needed
+
+      this.recognition.onresult = (event: any) => {
+        this.interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            this.zone.run(() => {
+              this.userInput += transcript;
+            });
+          } else {
+            this.interimTranscript += ' ' + transcript;
+          }
+        }
+      };
+
+      this.recognition.onerror = (event: any) => {
+        console.error('Speech recognition error:', event.error);
+      };
+    } else {
+      console.error('Speech Recognition API not supported in this browser.');
+    }
+  }
+
+  handleListening() {
+    this.listnerStarted = !this.listnerStarted;
+    this.listenerStopped = !this.listenerStopped;
+  }
+
+  startListening() {
+    if (this.recognition)
+      this.recognition.start();
+  }
+
+  stopListening() {
+    if (this.recognition)
+      this.recognition.stop();
+  }
 
   ngOnInit() {
     this.addBotMessage('Hello! I am Alex. You can ask me anything related to this application. Please tell me how I can help you today');

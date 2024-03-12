@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { LoginService } from '../../services/login.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,41 @@ export class SignupComponent {
     private userService: UserService,
     private _snackBar: MatSnackBar,
     private logInService: LoginService
-  ) { }
+  ) {
+    this.zone = new NgZone({ enableLongStackTrace: false });
+    this.initSpeechRecognition();
+  }
+
+  initSpeechRecognition() {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      this.recognition = new SpeechRecognition();
+      this.recognition.continuous = true;
+      this.recognition.interimResults = true;
+      this.recognition.lang = 'en'; // Set the language as needed
+
+      this.recognition.onresult = (event: any) => {
+        this.interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            this.zone.run(() => {
+              this.user.about += transcript;
+            });
+          } else {
+            this.interimTranscript += ' ' + transcript;
+          }
+        }
+      };
+
+      this.recognition.onerror = (event: any) => {
+        console.error('Speech recognition error:', event.error);
+      };
+    } else {
+      console.error('Speech Recognition API not supported in this browser.');
+    }
+  }
 
   public user = {
     username: '',
@@ -25,6 +60,26 @@ export class SignupComponent {
     dateOfBirth: '',
     phone: '',
     about: ''
+  }
+  listnerStarted: boolean = true;
+  listenerStopped: boolean = false;
+  recognition: any;
+  zone: any;
+  interimTranscript = ''
+
+  handleListening() {
+    this.listnerStarted = !this.listnerStarted;
+    this.listenerStopped = !this.listenerStopped;
+  }
+
+  startListening() {
+    if (this.recognition)
+      this.recognition.start();
+  }
+
+  stopListening() {
+    if (this.recognition)
+      this.recognition.stop();
   }
 
   submitForm(): void {
