@@ -21,7 +21,7 @@ export class BotComponent {
   recognition: any;
   zone: any;
   interimTranscript = ''
-
+  
   initSpeechRecognition() {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
@@ -39,9 +39,7 @@ export class BotComponent {
             this.zone.run(() => {
               this.userInput += transcript;
             });
-          } else {
-            this.interimTranscript += ' ' + transcript;
-          }
+          } 
         }
       };
 
