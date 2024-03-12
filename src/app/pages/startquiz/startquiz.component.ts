@@ -36,7 +36,18 @@ export class StartquizComponent {
   currentQuestionIndex: number = 0;
   quizScoreInfo = {
     "user": {},
-    "quiz": {},
+    "quiz": {
+      quizId: '',
+      title: '',
+      description: '',
+      maxMarks: 0,
+      numberOfQuestions: 0,
+      category: {
+        cid: '',
+        title: '',
+        description: ''
+      }
+    },
     "score": 0,
     "timeTaken": '',
     "quizDate": {}
@@ -121,7 +132,7 @@ export class StartquizComponent {
       const selectedAnswer = this.selectedOptions[i];
       const correctAnswer = this.questionsOfQuiz[i].correctAnswer;
       if (selectedAnswer === correctAnswer)
-        this.correctlySubmittedAnswersCount += 1;
+        this.correctlySubmittedAnswersCount += (this.quizScoreInfo.quiz.maxMarks / this.quizScoreInfo.quiz.numberOfQuestions);
     }
     this.totalTimeTaken -= this.timeLeft
     this.saveQuizScore();
@@ -133,7 +144,7 @@ export class StartquizComponent {
 
   getQuizById() {
     this.quizService.getQuiz(this.quizId).subscribe(
-      (data:any) => {
+      (data: any) => {
         this.quizScoreInfo.quiz = data.body
       }
     )
@@ -146,7 +157,7 @@ export class StartquizComponent {
     this.quizScoreInfo.quizDate = new Date()
     console.log(this.quizScoreInfo)
     this.userService.saveQuizScore(this.quizScoreInfo).subscribe(
-      (data:any) => {
+      (data: any) => {
         console.log(data)
       }
     )

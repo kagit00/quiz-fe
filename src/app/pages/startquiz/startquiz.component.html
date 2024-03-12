@@ -32,7 +32,7 @@
      <ng-template #quizComplete>
           <div class="quiz-complete-message">
                <h2>Your Quiz Result</h2>
-               <p>Your score: {{ correctlySubmittedAnswersCount }}</p>
+               <p>Your score: {{ correctlySubmittedAnswersCount }} Out Of {{quizScoreInfo.quiz.maxMarks}}</p>
                <p>Thank you for participating.</p>
           </div>
           <button class="btn" (click)="exit()" mat-raised-button color="primary">Exit</button>
