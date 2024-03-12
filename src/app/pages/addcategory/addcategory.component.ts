@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CategoryService } from '../../services/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,12 +10,67 @@ import Swal from 'sweetalert2';
   styleUrl: './addcategory.component.css'
 })
 export class AddcategoryComponent {
-  constructor(public dialogRef: MatDialogRef<AddcategoryComponent>, private categoryService: CategoryService, private _snackBar: MatSnackBar) {}
+  constructor(public dialogRef: MatDialogRef<AddcategoryComponent>, private categoryService: CategoryService, private _snackBar: MatSnackBar) {
+    this.zone = new NgZone({ enableLongStackTrace: false });
+    this.initSpeechRecognition();
+  }
 
   category = {
     'categoryCode': '',
     'title': '',
     'description': ''
+  }
+
+  listnerStarted: boolean = true;
+  listenerStopped: boolean = false;
+  recognition: any;
+  zone: any;
+  interimTranscript = ''
+
+  handleListening() {
+    this.listnerStarted = !this.listnerStarted;
+    this.listenerStopped = !this.listenerStopped;
+  }
+
+  startListening() {
+    if (this.recognition)
+      this.recognition.start();
+  }
+
+  stopListening() {
+    if (this.recognition)
+      this.recognition.stop();
+  }
+
+   initSpeechRecognition() {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      this.recognition = new SpeechRecognition();
+      this.recognition.continuous = true;
+      this.recognition.interimResults = true;
+      this.recognition.lang = 'en'; // Set the language as needed
+
+      this.recognition.onresult = (event: any) => {
+        this.interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            this.zone.run(() => {
+              this.category.description += transcript;
+            });
+          } else {
+            this.interimTranscript += ' ' + transcript;
+          }
+        }
+      };
+
+      this.recognition.onerror = (event: any) => {
+        console.error('Speech recognition error:', event.error);
+      };
+    } else {
+      console.error('Speech Recognition API not supported in this browser.');
+    }
   }
 
   saveCategory() {

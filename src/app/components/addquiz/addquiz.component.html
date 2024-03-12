@@ -12,21 +12,26 @@
                <mat-form-field>
                     <textarea matInput placeholder="Enter Quiz Description" name="description"
                          [(ngModel)]="quiz.description"></textarea>
+                    <button matTooltip="Talk About Quiz Description" *ngIf="listnerStarted" mat-icon-button matSuffix
+                         (click)="handleListening(); startListening();">
+                         <mat-icon>mic</mat-icon>
+                    </button>
+                    <button matTooltip="Stop" *ngIf="listenerStopped" mat-icon-button matSuffix
+                         (click)="handleListening(); stopListening();"><mat-icon>stop</mat-icon>
+                    </button>
                </mat-form-field>
                <div class="form-fields-container">
                     <mat-form-field>
                          <mat-label>Enter Quiz Marks</mat-label>
-                         <input matInput type="number" name="maxMarks"
-                              [(ngModel)]="quiz.maxMarks" />
+                         <input matInput type="number" name="maxMarks" [(ngModel)]="quiz.maxMarks" />
                     </mat-form-field>
 
                     <mat-form-field>
                          <mat-label>Enter Number of Questions</mat-label>
-                         <input matInput type="number" name="numberOfQuestions"
-                              [(ngModel)]="quiz.numberOfQuestions" />
+                         <input matInput type="number" name="numberOfQuestions" [(ngModel)]="quiz.numberOfQuestions" />
                     </mat-form-field>
                </div>
-               
+
                <mat-form-field>
                     <mat-select placeholder="Select Category" [(ngModel)]="selectedOption"
                          [ngModelOptions]="{ standalone: true }" (ngModelChange)="onOptionSelected()">

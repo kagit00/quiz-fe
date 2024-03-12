@@ -11,9 +11,17 @@
                </mat-form-field>
 
                <mat-form-field>
-                    <textarea matInput placeholder="Enter Category Description" name="description" [(ngModel)]="category.description"></textarea>
+                    <textarea matInput placeholder="Enter Category Description" name="description"
+                         [(ngModel)]="category.description"></textarea>
+                    <button matTooltip="Talk About Category Description" *ngIf="listnerStarted" mat-icon-button matSuffix
+                         (click)="handleListening(); startListening();">
+                         <mat-icon>mic</mat-icon>
+                    </button>
+                    <button matTooltip="Stop" *ngIf="listenerStopped" mat-icon-button matSuffix
+                         (click)="handleListening(); stopListening();"><mat-icon>stop</mat-icon>
+                    </button>
                </mat-form-field>
-           
+
                <button class="btn" mat-raised-button color="primary">Submit</button>
           </form>
      </mat-card-content>

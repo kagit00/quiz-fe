@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, NgZone } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CategoryService } from '../../services/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,6 +12,26 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class UpdatecategoryComponent {
   category: any
+  listnerStarted: boolean = true;
+  listenerStopped: boolean = false;
+  recognition: any;
+  zone: any;
+  interimTranscript = ''
+
+  handleListening() {
+    this.listnerStarted = !this.listnerStarted;
+    this.listenerStopped = !this.listenerStopped;
+  }
+
+  startListening() {
+    if (this.recognition)
+      this.recognition.start();
+  }
+
+  stopListening() {
+    if (this.recognition)
+      this.recognition.stop();
+  }
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<UpdatecategoryComponent>,
@@ -19,6 +39,39 @@ export class UpdatecategoryComponent {
     private _snackBar: MatSnackBar
   ) {
     this.category = { ...data };
+    this.zone = new NgZone({ enableLongStackTrace: false });
+    this.initSpeechRecognition();
+  }
+
+  initSpeechRecognition() {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      this.recognition = new SpeechRecognition();
+      this.recognition.continuous = true;
+      this.recognition.interimResults = true;
+      this.recognition.lang = 'en'; // Set the language as needed
+
+      this.recognition.onresult = (event: any) => {
+        this.interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            this.zone.run(() => {
+              this.category.description += transcript;
+            });
+          } else {
+            this.interimTranscript += ' ' + transcript;
+          }
+        }
+      };
+
+      this.recognition.onerror = (event: any) => {
+        console.error('Speech recognition error:', event.error);
+      };
+    } else {
+      console.error('Speech Recognition API not supported in this browser.');
+    }
   }
 
   close(): void {
