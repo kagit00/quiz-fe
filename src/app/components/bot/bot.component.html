@@ -15,12 +15,13 @@
 
      <div class="chat-input">
           <mat-form-field appearance="fill" class="chat-input-field">
-               <mat-label class="chat-input-field">Type your message...</mat-label>
+               <mat-label class="chat-input-field">Press 'Enter' To Send Your Message..</mat-label>
                <input matInput [(ngModel)]="userInput" (keydown.enter)="sendMessage()" />
-               <button *ngIf="listnerStarted" mat-icon-button matSuffix (click)="handleListening(); startListening();">
+               <button matTooltip="Press To Say Your Message" *ngIf="listnerStarted" mat-icon-button matSuffix
+                    (click)="handleListening(); startListening();">
                     <mat-icon>mic</mat-icon>
                </button>
-               <button *ngIf="listenerStopped" mat-button
+               <button matTooltip="Stop" *ngIf="listenerStopped" mat-icon-button matSuffix
                     (click)="handleListening(); stopListening();"><mat-icon>stop</mat-icon>
                </button>
           </mat-form-field>

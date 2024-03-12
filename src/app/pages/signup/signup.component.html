@@ -65,9 +65,14 @@
                               <mat-label>About</mat-label>
                               <textarea matInput name="about" [(ngModel)]="user.about" type="number"
                                    placeholder="Enter About"></textarea>
+                              <button matTooltip="Talk About Yourself" *ngIf="listnerStarted" mat-icon-button matSuffix
+                                   (click)="handleListening(); startListening();">
+                                   <mat-icon>mic</mat-icon>
+                              </button>
+                              <button matTooltip="Stop" *ngIf="listenerStopped" mat-icon-button matSuffix
+                                   (click)="handleListening(); stopListening();"><mat-icon>stop</mat-icon>
+                              </button>
                          </mat-form-field>
-                         <button *ngIf="listnerStarted" mat-button (click)="handleListening(); startListening();"><mat-icon>mic</mat-icon></button>
-                         <button *ngIf="listenerStopped" mat-button (click)="handleListening(); stopListening();"><mat-icon>stop</mat-icon></button>
                     </div>
 
                     <button class="btn" mat-raised-button color="primary" type="submit">Register</button>
