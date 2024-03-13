@@ -50,8 +50,8 @@
 
 .toggle-button {
      position: fixed;
-     bottom: 20px;
-     left: 20px;
+     bottom: 30px;
+     right: 20px;
      color:  #000000;
      z-index: 999;
 }
