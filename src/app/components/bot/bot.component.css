@@ -51,9 +51,8 @@
 .toggle-button {
      position: fixed;
      bottom: 20px;
-     right: 20px;
-     background-color: #000000;
-     color: #fff;
+     left: 20px;
+     color:  #000000;
      z-index: 999;
 }
 
@@ -79,4 +78,9 @@
      border-radius: 5px;
      color: white;
      margin-left: auto; 
+}
+
+.card-img-top {
+  height: 20px;
+  object-fit: cover;
 }

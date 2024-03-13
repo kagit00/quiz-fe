@@ -29,7 +29,7 @@ export class BotComponent {
       this.recognition = new SpeechRecognition();
       this.recognition.continuous = true;
       this.recognition.interimResults = true;
-      this.recognition.lang = 'en'; // Set the language as needed
+      this.recognition.lang = 'en'; 
 
       this.recognition.onresult = (event: any) => {
         this.interimTranscript = '';

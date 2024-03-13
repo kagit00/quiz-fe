@@ -3,8 +3,7 @@
 </button>
 
 <div class="chat-container" *ngIf="showChatWindow">
-     <button style="border: 5px solid white;" (click)="toggleChatWindow()"><mat-icon>cancel</mat-icon></button>
-
+     <img src="../../../assets/img/getstarted.jpg" alt="Profile Picture" class="card-img-top">
      <div class="chat-messages">
           <div *ngFor="let message of messages" style="margin-bottom: 10px;"
                [ngClass]="{'chat-list-item-user': message.from === 'user', 'chat-list-item-bot': message.from === 'bot'}"
